@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 및 멀티미디어 관련 태그</title>
+</head>
+<body>
+    <h1>이미지 관련 태그</h1>
+    <!--
+        <img src="이미지가 저장된 경로" alt="이미지 대체 문구" width="이미지크기" height="이미지크기"/>
+    -->
+    <img src="/resources/image/passion2.jpg" 
+    width="340" 
+    height="340" 
+    alt="갓생살기"/>
+
+    <img src="../resources/image/passion.jpg"
+    width="340" height="340" alt="열정맨" />
+
+    <h3>* width와 height 속성</h3>
+    <p>
+        이미지의 가로, 세로 길이를 조정하는 속성<br>
+        고정길이단위와 가변길이 단위로 지정 가능
+    </p>
+
+    <h4>고정길이단위(px) : 화면사이즈가 몇이든 항상 일관된 크기를 가지는 단위</h4>
+    <img src="/resources/image/nuguri1.gif" width="200px" height="150" />
+    <img src="/resources/image/nuguri2.gif" width="200px" height="150" />
+    <img src="/resources/image/nuguri3.gif" width="200px" height="150" />
+    <br>
+
+    <h4>가변길이단위(%) : 화면사이즈의 변화에 따라 이미지 크기도 같이 변화하는 크기 단위</h4>
+    <img src="/resources/image/animal1.gif" width="23%" height="250">
+    <img src="/resources/image/animal2.gif" width="23%" height="250">
+    <img src="/resources/image/animal3.gif" width="23%" height="250">
+
+    <br>
+
+    <h4>반응형 이미지 : 화면사이즈에 따라 보여줄 이미지를 지정</h4>
+    <picture>
+        <!--
+            picture : 화면사이즈 별로 보여줄 이미지를 지정할 수 있는 태그.
+        -->        
+        <source srcset="/resources/image/flower1.jpg" 
+        media="(max-width: 600px)"/> <!-- 화면 사이즈가 600이하일때 보여줄 이미지  -->    
+        <source srcset="/resources/image/flower2.jpg"
+        media="(max-width:1200px)"/><!-- 화면 사이즈가 1200px이하인경우  -->
+        <source srcset="/resources/image/flower3.jpg"/> <!-- 그 외 화면-->
+        <img src="" />
+    </picture>
+
+    <h4>image map</h4>
+    <img src="/resources/image/passion2.jpg" style="width:500px" usemap="#mymap" />
+    <map name="mymap">
+        <!--
+            사각형 좌표지정 : x1 , y1, x2, y2
+        -->
+        <area shape="rect" coords="0, 0, 250, 500" href="http://google.com" alt="구글로 이동">
+        <area shape="rect" coords="250, 0, 500, 500" href="http://naver.com" alt="네이버로 이동">
+    </map>
+
+    <br>
+
+    <h1>미디어 관련 태그</h1>
+
+    <h3>오디오 관련 태그</h3>
+    <audio src="/resources/audio/major.mp3"
+    controls autoplay muted loop 
+    > 당신의 브라우져는 audio태그를 사용할 수 없습니다.
+    </audio>
+
+    <h3>비디오 관련 태그</h3>
+    <video src="/resources/video/video1.mp4"
+     controls loop muted poster="/resources/image/bono.jpg"
+     width="400px" height="200px" preload 
+     
+    >
+    당신의 브라우져는 video태그를 쓸 수 없습니다...
+    </video>
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
