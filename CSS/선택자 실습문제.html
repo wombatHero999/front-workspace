@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 선택자 실습문제</title>
+    <link rel="stylesheet" href="resources/css/selector_test.css">
+</head>
+<body>
+    문제 1. id값이 container인 div태그 중 class명이 highlight인 요소에 배경색 yellow를 부여하시오.
+    <div id="container1" class="highlight">이 요소는 배경색이 노란색입니다.</div>
+    <div class="highlight">이 요소는 기본 스타일입니다.</div>
+
+    <hr>
+    문제 2. 아래 div의 전체 p태그 중 div의 자손인 태그는 글자색을 red로 변경하고, 
+        자손이 아닌 p태그의 글자색은 pink로 변경하시오.
+    <div id="container2">
+        <p>직계 자식</p>
+        <pre>
+            <p>자손</p>
+        </pre>
+    </div>
+
+    <hr>
+
+    문제 3. container의 자식들 input 태그들 중 type이 submit이 아닌 요소들의 borer 속성을
+        1px soild blue로 변경하시오.
+    <div id="container3">
+        <input type="text" placeholder="텍스트 입력">
+        <input type="password" placeholder="비밀번호">
+        <input type="submit" value="확인">
+    </div>
+
+    <hr>
+
+    문제 4 . container의 자식들 중 h1태그 혹은 클래스명이 title인 요소를 선택하여 글자색을 green,
+        font-size를 20px로 변경하시오.
+    <div id="container4">
+        <h1>첫 번째</h1>
+        <p class="title">두번째</p>
+        <p>세번째</p>
+    </div>
+
+    <hr>
+
+    문제 5. div태그들 중 class속성의 값이 user로 시작하는 요소의 배경색은 light-gray로, <br>
+        div태그들 중 class속성의 값이 info로 끝나는 요소는 글자색을 red로, <br>
+        div태그들 중 class속성의 값에 product가 단어로써 포함되는 경우 배경색을 coral로 변경하시오. <br>        
+        div태그들 중 class속성의 값들 중 하이픈(-) 기준 맨 앞의 단어로 admin이 포함된 경우 배경색을 greenyellow로 변경하시오
+    <br><br>
+    <div class="user-info">사용자 정보</div>
+    <div class="admin-info">관리자 정보</div>
+    <div class="product-info">상품 정보</div>
+    <div class="product">iphone</div>
+    <div class="product">imax</div>
+
+
+    <hr>
+
+   문제 6. container6의 자식 input태그에 초점이 맞추어지면 배경색을 yellow로 변경하고,
+        input태그에 마우스가 올라가면 배경색을 green으로 변경하시오
+    <div id="container6">
+        <input type="text" placeholder="포커스 및 호버 테스트">
+    </div>
+
+    <hr>    
+
+    문제 7. container7의 자식들 중 두 번째 li의 font-weight를 bold로 변경하시오   
+    <ul id="container7">
+        <li>첫 번째 li</li>
+        <p>첫 번째 p </p>
+        <li>두 번째 li</li>
+        <p>두 번째 p </p>
+        <li>세 번째 li</li>
+    </ul>
+
+    <hr>
+
+    문제 8 . 클래스명이 container8의 자식요소들 중 유일한 p태그의 글자색을 blue로 변경하시오 
+    <div class="container8">
+        <p>유일한 자식</p>
+    </div>
+    <div class="container8">
+        <p>여러 자식 중 하나</p>
+        <span>다른 자식</span>
+        <span>다른 자식</span>
+        <span>다른 자식</span>
+        <span>다른 자식</span>
+    </div>
+
+    <hr>
+
+    문제 9 . title 속성에 "important"가 포함되지만 "not-important"는 포함되지 않은 요소만 배경색을  red로 변경하시오
+    <div id="container9">
+        <p title="important-note">빨간 배경</p>
+        <p title="not-important-note">일반 배경</p>
+        <p title="normal">일반 배경</p>
+    </div>
+    <hr>
+
+    문제 10 . id가 menu인 ul 안에서 class가 active인 li 항목의 텍스트 색상을 빨간색으로 설정하세요.
+    <ul id="menu">
+        <li class="active">현재 선택된 항목</li>
+        <li>다른 항목</li>
+    </ul>
+    <ul>
+        <li class="active">이 항목은 스타일을 적용받지 않습니다.</li>
+    </ul>
+</body>
+</html>
