@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,span {
+            border : 1px solid black;
+        }
+
+        #div1,#span1 {
+            background-color: red;
+        }
+
+        #div2, #span2{
+            background-color: yellow;
+        }
+
+        #div3,#span3{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>영역 관련 태그</h1>
+
+    <!--
+        블럭 요소   : 한 줄 단위로 영역을 차지하는 요소들
+                     줄바꿈이 이미 적용되어 다음 요소 출력시 해당 요소의 다음 줄에 출력된다
+                     ex) h, p, pre , ... , "div"
+        인라인 요소 : content내용에 해당되는 부분만 영역을 차지하는 요소들. 
+                     줄바꿈이 적용되지 않아 옆으로 연이어 져서 출력도니다.
+                     ex) b, s, mark, input .... , "span"
+    -->
+    
+    <h2>div태그와 span태그 차이점</h2>
+
+    <h3>div(division)태그 : 블럭요소 (한 줄 단위 영역차지)</h3>
+    <div id="div1" >첫번째 영역</div>
+    <div id="div2">두번째 영역</div>
+    <div id="div3">세번째 영역</div>
+
+    <h3>span 태그 : 인라인 요소(content영역만을 차지)</h3>
+    <span id="span1">1번째 영역</span>
+    <span id="span2">2번째 영역</span>
+    <span id="span3">3번째 영역</span>
+
+    <h3>div 태그 : 컨텐츠 영역의 값을 커다란 사각형 박스로 영역을 지정</h3>
+    <div>
+        길을 가치를 불어 뭇 이상을 쓸쓸하랴 이상 천지는 구할 이것이다 노래하며 품에 동력은 원질이 우리 싸인 온갖 풀이 봄바람이다 하는 뜨거운지라 싶이 공자는 심장은 죽음이 같이 인간이 발휘하기 아름답고 있으며 붙잡아 위하여 천자만홍이 일월과 대고 그와 관현악이며 갑 그것은 보는 피고 불어넣는 있는 없으면 소금이라 것은 고동을 무엇을 광야에서 노년에게서 청춘의 장식하는 바이며 그들의 품으며 살았으며 되려니와 그림자는 사는가 영원히 열매를 피부가 속에 희망의 것이다 청춘 풀밭에 거친 트고 뿐이다 그러므로 품었기 착목하는 인간은 하였으며 새가 때까지 피다 그들은 가진 꽃이 따뜻한 인간에 남는 생의.
+
+이것은 하는 긴지라 얼마나 기쁘며 같은 찾아 천지는 보라 것이다 품에 생생하며 구하지 인생의 커다란 피가 있는 뿐이다 풍부하게 빛나는 그와 위하여서 끝까지 거선의 이것을 사막이다 그들을 인생에 우리는 몸이 들어 그들은 기관같이 없으면 이상 아니더면 작고 방황하였으며 보이는 인간은 군영과 수 할지니 대한 청춘을 그들에게 때문이다 때까지 길을 봄바람을 광야에서 찾아다녀도 고동을 열락의 평화스러운 너의 풀밭에 그리하였는가 무엇이 타오르고 가진 꽃이 누리는 청춘이 붙잡아 끓는 피고 천자만홍이 청춘의 길지 봄바람이다 가치를 하였으며.
+    </div>
+
+    <h3>span 태그 : 컨텐츠 영역의 값을 문장단위로 영역을 지정</h3>
+
+    <span>
+길을 가치를 불어 뭇 이상을 쓸쓸하랴 이상 천지는 구할 이것이다 노래하며 품에 동력은 원질이 우리 싸인 온갖 풀이 봄바람이다 하는 뜨거운지라 싶이 공자는 심장은 죽음이 같이 인간이 발휘하기 아름답고 있으며 붙잡아 위하여 천자만홍이 일월과 대고 그와 관현악이며 갑 그것은 보는 피고 불어넣는 있는 없으면 소금이라 것은 고동을 무엇을 광야에서 노년에게서 청춘의 장식하는 바이며 그들의 품으며 살았으며 되려니와 그림자는 사는가 영원히 열매를 피부가 속에 희망의 것이다 청춘 풀밭에 거친 트고 뿐이다 그러므로 품었기 착목하는 인간은 하였으며 새가 때까지 피다 그들은 가진 꽃이 따뜻한 인간에 남는 생의.
+
+이것은 하는 긴지라 얼마나 기쁘며 같은 찾아 천지는 보라 것이다 품에 생생하며 구하지 인생의 커다란 피가 있는 뿐이다 풍부하게 빛나는 그와 위하여서 끝까지 거선의 이것을 사막이다 그들을 인생에 우리는 몸이 들어 그들은 기관같이 없으면 이상 아니더면 작고 방황하였으며 보이는 인간은 군영과 수 할지니 대한 청춘을 그들에게 때문이다 때까지 길을 봄바람을 광야에서 찾아다녀도 고동을 열락의 평화스러운 너의 풀밭에 그리하였는가 무엇이 타오르고 가진 꽃이 누리는 청춘이 붙잡아 끓는 피고 천자만홍이 청춘의 길지 봄바람이다 가치를 하였으며.
+    </span>
+
+    <hr>
+
+    <h1>iFrame 태그</h1>
+    <p>
+        - 현재 문서 내에 다른 웹페이지문서를 추가하는 태그 
+    </p>
+
+    <iframe src="04_이미지와멀티미디어.html" width="600" ></iframe>
+
+    <br><br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Hooq1zQ11VU" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+        
+    <iframe width="670" height="377" src="https://www.youtube.com/embed/szj8w-5nqE4" title="호미들 - 사이렌 Remix (Feat. UNEDUCATED KID, Paul Blanco) [사이렌 Remix]ㅣLyrics/가사" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

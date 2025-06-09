@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본선택자</title>
+    <!--
+        내부 스타일 방식
+         - 현재 문서에만 적용시키고자 하는 스타일 정보가 있는 경우 사용하는 스타일링 방식
+         - head태그 사이에 <style>태그를 선언하여 css를 작성한다.
+    -->
+    <style>
+        /* CSS영역 */
+        /* body {
+            color : red;
+            font-family: '궁서'; 
+        } */
+
+        * {
+            color : black;
+        }
+        
+        .class1{
+            color : yellowgreen;
+        }
+
+        .test{
+            font-size:30px
+        }
+
+        #id1{
+            color : pink;
+        }
+        
+        #id4{
+            font-size: 30px;
+        }
+
+    </style>
+    <link href="./css/test.css" rel="stylesheet" >
+</head>
+<body>
+    <h1>CSS(Cascading Style Sheets)</h1>
+    <pre>
+        HTML이 실제로 화면에
+        표시되는 방법들을 기술하는 언어. 
+        즉, HTML코드가 화면에 어떤 스타일로 보여질지를 정하는 언어이며, CSS의 몇 가지
+        속성은 상위요소에 작성시 하위요소까지 연속적으로 전파(Cascading)된다.
+    </pre>
+
+    <div style="font-size:20px">
+        <div style="font-size:25px">
+            <div style="font-size:30px">
+                <div>
+                    <p>하이</p>
+                    <!-- 
+                        상위요소에서 작성한 스타일을 상속(전파)받아 폰트크기가 20px로 지정.
+                        상위요소에 동시에 동일한 속성이 작성된 경우, 우선순위 적용 규칙에 따라 스타일
+                        이 적용되며, 스타일을 적용하고자 하는 요소가 얼마나 구체적인지에 따라 적용되는
+                        스타일이 다르다.
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        출처 
+         - 스타일이 작성된 위치
+         1) 인라인 스타일 : 태그의 style속성으로 작성된 스타일
+         2) 내부 스타일 : 현재 문서 안에 <style>태그를 통해 작성된 스타일
+         3) 외부 스타일 : 현재 문서 외부에 css파일을 만들고 그 안에 작성된 스타일들
+    -->
+
+    <h1>CSS 기본 선택자</h1>
+
+    <h2>CSS 선택자의 종류</h2>
+    <!--
+        선택자?
+         - 스타일 적용하고자하는 요소(태그)들을 선택하는 방법
+        
+        명시도
+         - 스타일 규칙이 얼마나 구체적인지를 의미하는 개념
+         - 선택자별로 명시도가 다르다.
+    -->
+    <h3>1. 전체 선택자 (*)</h3>
+    <p>모든 요소들을 다 선택하고자 할 때 사용하는 선택자</p>
+    <!--
+        * {
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+    -->
+    <hr>
+    <h3>2. 태그 선택자</h3>
+    <p>
+        html내부의 같은 태그들을 모두 선택하고자 할 때
+        사용하는 선택자
+    </p>
+    <!--
+        태그명 {
+            속성 : 값;
+            ...
+        }
+    -->
+    <hr>
+    <h3>3. 클래스 선택자 (.클래스명)</h3>
+    <p class="class1">
+        현재 html문서 내에서 원하는 여러개의 요소를 선택하고자 할 때 사용
+    </p>
+    <!--
+        .클래스명 {
+            속성 : 값;
+            ...
+        }
+    -->
+    <ul>
+        <li class="class1">클래스선택자1</li>
+        <li class="test">클래스선택자2</li>
+        <li class="class1 test">클래스선택자3</li>
+        <li class="">클래스선택자4</li>
+        <li class="class1">클래스선택자5</li>
+    </ul>
+    
+    <hr>
+
+    <h3>4. 아이디 선택자(#아이디명)</h3>
+    <p>
+        현재 html문서 내에 특정 html요소 하나만을 선택
+        하고자 할 때 사용하는 선택자
+    </p>
+    <!--
+        #아이디명 {
+            속성:속성값; 
+            ...
+        }
+    -->
+    <ol>
+        <li id="id1">아이디 선택자</li>
+        <li id="id2">아이디 선택자</li>
+        <li id="id3">아이디 선택자</li>
+        <li id="id4">아이디 선택자</li>
+    </ol>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+</body>
+</html>
