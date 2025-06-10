@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃스타일1</title>
+    <link rel="stylesheet" href="./css/06_layout.css">
+</head>
+<body>
+    <h1>레이아웃(Layout)</h1>
+    <pre>
+        사전적 의미 : 배치 
+        기술적 의미 : 구성 요소들을 제한된 공간에 배치하는 것을 의미
+    </pre>
+
+    <hr>
+
+    <h1>화면 배치 방법 : display</h1>
+
+    <pre>
+        요소가 화면에 어떻게 보여질지(display)를 지정하는 속성
+        - block : 화면을 수직 분할 (행으로 나눔)
+        - inline : 화면을 수평 분할 (열로 나눔)
+        - inline-block : inline의 수평분할 + block의 특징 결합(크기지정)
+        - none : 화면에 요소를 보여주지 않도록 하는 속성
+    </pre>
+
+    <h3>block형식의 요소를 inline으로 변경</h3>
+    <div class="block area1 inline">1번째 영역</div>
+    <div class="block area2 inline">2번째 영역</div>
+    <div class="block area3 inline">3번째 영역</div>
+    <div class="block area4 inline">4번째 영역</div>
+    <div class="block area5 inline">5번째 영역</div>
+
+    <h3>inline형식의 요소를 block으로 변경</h3>
+    <span class="area1 block">1번째 영역</span>
+    <span class="area2 block">2번째 영역</span>
+    <span class="area3 block">3번째 영역</span>
+    <span class="area4 block">4번째 영역</span>
+    <span class="area5 block">5번째 영역</span>
+
+    <h3>inline-block확인</h3>
+    <div class="area1 block inline-block">1번째 영역</div>
+    <div class="area2 block inline-block">2번째 영역</div>
+    <div class="area3 block inline-block">3번째 영역</div>
+    <div class="area4 block inline-block">4번째 영역</div>
+    <div class="area5 block inline-block">5번째 영역</div>
+
+    <hr>
+
+    <h1>화면 분할 연습</h1>
+
+    <h3>상하 2분할</h3>
+
+    <!-- 내부 div2개를 감싸는 부모 요소-->
+    <div id="container-1">
+        <div class="div-1"></div>
+        <div class="div-1"></div>
+    </div>
+
+    <hr>
+
+    <h3>상하 3분할</h3>
+    <pre>
+        분할 비율 -> 2 : 3 : 5
+        배경색은 자유롭게
+        화면분할 요소의 class명은 div-2 
+        부모요소의 id명은 container-2
+    </pre>
+
+    <div id="container-2">
+        <div class="div-2"></div>
+        <div class="div-2"></div>
+        <div class="div-2"></div>
+    </div>
+
+    <hr>
+    <h3>좌우 2분할</h3>
+    <pre>
+        분할 비율 -> 5:5
+        분할되는 요소의 class명 div-3 
+        부모요소의 id명 container-3 
+        색상은 자유.
+    </pre>
+    
+    <div id="container-3">
+        <div class="div-3"></div><div class="div-3"></div>
+    </div>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+</body>
+</html>

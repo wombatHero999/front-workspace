@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+    <link rel="stylesheet" href="./css/05_selector.css">
+</head>
+<body>
+    <h1>선택자 우선 순위</h1>
+
+    <pre>
+        css속성은 style태그 또는 css파일에 작성된 순서에 맞춰서
+        스타일 적용 되지만, 
+        만약 같은 요소에 동일한 css속성이 설정되는 경우 우선순위가 적용된다
+
+        1) 동일한 우선순위를 가진 경우, 제일 마지막에 작성된 css속성이 반영된다
+        2) 여러 선택자를 이용하여 같은 요소를 선택하더라도 지정한 css속성이 서로 다르다면 모두 반영
+
+        css 우선순위 (명시도 순)
+        1순위 : css속성에 !important;가 포함된 경우
+        2순위 : 인라인스타일 속성
+        3순위 : 아이디 선택자
+        4순위 : 클래스 선택자
+        5순위 : 태그 선택자
+        ...
+    </pre>
+
+    <div id="test1" class="cls1" style="background-color: pink;" >우선순위 테스트</div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
