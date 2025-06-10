@@ -1,0 +1,84 @@
+div{
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+.container-1{
+    border:2px dashed red;
+
+    position: relative;
+    /* 
+        relative; 부모요소에 작성하는 속성
+        자식요소의 상대적인 기준점으로 설정 된다.
+    */
+}
+
+.first{
+    width: 300px;
+    height: 300px;
+    background-color: yellow;
+}
+.second{
+    width: 200px;
+    height: 200px;
+    background-color: green;
+
+    position : absolute;
+    /* 
+        배치순서를 무시하는 속성.
+    */
+    top : 50px;/* 상대적인 기준점으로 부터 위에서 50px만큼 떨어진 곳에 배치  */
+    left : 50px;
+}
+.third{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+    position:absolute;
+    top: 100px;
+    left : 100px;
+}
+
+.container-2{
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+#center{
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+
+.fixed-area{
+    width: 120px;
+    text-align: center;/* 문자열 가운데 정렬 */
+    position:fixed;
+    /* 
+        fixed요소는 뷰포트(화면)기준으로 요소를 고정적인 위치에 배치하는 속성
+    */
+
+    bottom : 50px;
+    right : 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

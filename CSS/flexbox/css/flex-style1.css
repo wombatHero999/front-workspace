@@ -1,0 +1,25 @@
+.flex-container{
+    height: 700px;
+    background-color: #ddd;
+
+    display : flex;
+    /*
+        flex-container에 지정 가능한 속성으로, 내부의 item들이 자동으로
+        공백이 사라지면서 content영역만큼의 크기만 가진 채로 정렬
+        
+        item에 별도의 width/height값이 지정되어 있다면 지정된 값을 가지게 된다.
+    */
+
+    /* flex-direction
+        - 중심축의 방향과, 시작 위치를 지정하는 속성
+    */
+
+    /* 행방향(기본값)  */
+    flex-direction: row;
+    /* 행방향 역순 */
+    flex-direction: row-reverse;
+    /* 열 방향(세로)*/
+    flex-direction: column;
+    /* 열 방향 역순*/
+    flex-direction: column-reverse;
+}
