@@ -1,0 +1,65 @@
+div{
+    border :1px solid black;
+    box-sizing: border-box;
+}
+
+.test{
+    width: 300px;
+    height: 200px;
+    background-color: #eee;    
+}
+
+.float-left{
+    width: 50px;
+    height: 50px;
+
+    /* 요소를 부모요소 내부에 정렬 시키고자 한다면? */
+    /* display:inline-block; */
+    float : left;
+}
+
+.clear{
+    clear:both;
+    /* 
+        clear : 현재 요소부터 겹쳐지는 float상태를
+        해제하는 속성
+        clear : both/left/right 
+         - float의 흐름과 일치하는 방향을 해제해준다.
+    */
+    background-color: red;
+}
+
+.float-right{
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    float:right;
+}
+
+.container{
+    width:400px;
+    height:200px;
+}
+
+.bg-1{background-color: red;}
+.bg-2{background-color: orange;}
+.bg-3{background-color: yellow;}
+.bg-4{background-color: green;}
+.bg-5{background-color: lightblue;}
+.bg-6{background-color: navy;}
+.bg-7{background-color: violet;}
+
+.div-1{
+    width: 50%;
+    height: 100%;
+    float:left;
+}
+
+.row-2{
+    height: 50%;
+}
+
+.container-3{
+    width: 400px;
+    height: 400px;
+}

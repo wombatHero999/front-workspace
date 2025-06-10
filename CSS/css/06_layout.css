@@ -78,6 +78,18 @@
     background-color: steelblue;
 }
 
+.div-4{
+    border : 3px solid black;
+    height: 100px;
+}
 
-
+#test4 {
+    background-color: deeppink;
+    /* display:none; */
+    /* visibility:hidden; */
+    /* 요소의 투명도를 조절하는 속성
+       opacity : 0
+    */
+    opacity : 0.1;
+}
 
