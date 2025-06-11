@@ -1,0 +1,43 @@
+.flex-container{
+    height: 700px; /* 현재 화면의 85% 비율 */
+    display: flex;
+    flex-wrap:wrap;
+
+    /* align-content
+        - cross axis방향으로 포장된 item들을
+        정렬하는 속성 
+        - 조건으로 반드시 아이템들이 wrap 또는 wrap
+          -reverse 상태여야 사용 가능
+        - justify-content의 속성값과 동일한 값들을
+        사용할 수 있다.
+    */
+
+    /* cross axis 방향 시작 지점으로 포장된 item들을 정렬 */
+    align-content:flex-start;
+
+    /* cross axis 방향 끝 지점으로 포장된 item들을 정렬 */
+    align-content:flex-end;
+
+    /* cross axis 기준 가운데 정렬*/
+    align-content:center;
+
+    /* cross 기준 각 라인 사이에 동일한 크기의
+    공간을 할당하여 정렬 */
+    align-content : space-around;
+
+    /* cross axis 기준 균등한 공간을 할당*/
+    align-content : space-evenly;
+
+    align-content : space-between;
+}
+
+
+
+
+
+
+
+
+
+
+

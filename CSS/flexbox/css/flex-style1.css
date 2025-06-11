@@ -14,12 +14,126 @@
         - 중심축의 방향과, 시작 위치를 지정하는 속성
     */
 
-    /* 행방향(기본값)  */
-    flex-direction: row;
     /* 행방향 역순 */
     flex-direction: row-reverse;
     /* 열 방향(세로)*/
     flex-direction: column;
     /* 열 방향 역순*/
     flex-direction: column-reverse;
+    /* 행방향(기본값)  */
+    flex-direction: row;
+
+    /* flex-wrap */
+    /* 
+        flex-item을 포장(wrap)하는 속성
+        flex-wrap적용시 item들이 한줄 혹은 여러줄로 배치할 수
+        있게 된다.
+    */
+    
+    /* item을 여러줄로 배치하는 속성 */
+    flex-wrap:wrap;
+    
+    /* item을 여러줄로 배치하되 뒤에서부터 배치하는 속성  */
+    flex-wrap : wrap-reverse;
+    
+    /* item을 한줄로만 배치하는 속성(기본값) */
+    flex-wrap:nowrap;
+
+    /* flex-flow
+       main axis의 방향과 순서, wrap여부를 한번에 설정하는 속성
+    */
+    flex-flow : row-reverse wrap;
+    flex-flow : row nowrap;
+
+    /* justify-content
+      - item을 조정(justify)하는 속성
+      - main axis 방향으로 item의 정렬 방법을 조정한다.
+    */
+    
+    /* main axis의 끝 지점을 기준으로 요소를 정렬 */
+    justify-content : flex-end;
+    
+    /* main axis의 가운데 지점으로 요소를 정렬 */
+    justify-content:center;
+    
+    /* item 주위에 main axis기준으로 양쪽에 일정한 크기에 공간을
+    추가하여 정렬 */
+    justify-content:space-around;
+    
+    /*
+    item이 main axis기준으로 항상 동일한 간격을 가지게 하면
+    서 정렬
+    */
+    justify-content: space-evenly;
+    
+    /* 
+    space-evenly에서 양 끝단을 flex-container에 붙여서
+    정렬하는 속성
+    */
+    justify-content : space-between;
+
+    /* main axis의 시작지점을 기준으로 요소를 정렬(기본값) */
+    justify-content:flex-start;
+
+    /*
+        align-items
+         - item들을 cross axis(교차축)방향으로 정렬하는 속성
+    */
+
+    /*
+        item의 너비 또는 높이를 교차축 방향으로
+        쭉 늘려서 flex-container와 같은 크기를 가지게하는 속성.
+        단, flex-item요소가 이미 교차축 방향으로 width/height
+        값을 가지고 있다면 적용되지 않는다.
+    */
+    align-items:stretch;
+
+    /* cross axis의 시작지점을 기준으로 요소를 정렬 */
+    align-items:flex-start;
+
+    /* cross axis의 끝 부분에 요소를 정렬 */
+    align-items : flex-end;
+
+    /* cross axis기준 중간에 요소를 정렬 */
+    align-items : center;
+
+    /*  
+        item내부의 content요소 기준 한줄로
+        배치되게 해주는 속성. 
+        각 item요소에 cross axis기준으로 약간의
+        변화를 준다.
+    */
+    align-items : baseline;
 }
+.item2{
+    padding:10px;
+}
+.item3{
+    padding:20px;
+}
+
+#con{
+    width: 450px;
+    height: 450px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#center{
+    width: 80px;
+    height: 80px;
+    background-color: pink;
+}
+
+
+
+
+
+
+
+
+
+
+

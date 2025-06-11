@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+#size-test > li:nth-child(1){font-size:24px;}
+#size-test > li:nth-child(2){font-size:18pt;}
+#size-test > li:nth-child(3){font-size:150%;}
+#size-test > li:nth-child(4){font-size:1em;}
+
+#weight-test > li{font-size:34px;}
+#weight-test > li:nth-child(1){font-weight:400}
+#weight-test > li:nth-child(2){font-weight:bold}
+#weight-test > li:nth-child(3){font-weight:900}
+#weight-test > li:nth-child(4){font-weight:bolder}
+#weight-test > li:nth-child(5){font-weight:lighter}
+
+.cls > li {font-size:24px;}
+
+#family-test1 > li:nth-child(1){
+    font-family: '궁서';
+}
+
+#family-test1 > li:nth-child(2){
+    font-family: '재명체';
+}
+
+#family-test1 > li:nth-child(3){
+    font-family: '재명체','문수체','굴림체','궁서체';
+}
+
+/* HTML로 LINK태그를 이용해 웹폰트 추가 */
+#family-test2 > li:nth-child(1){
+    font-family: "Noto Serif Dives Akuru", serif;
+}
+
+/* import로 웹폰트 추가*/
+#family-test2 > li:nth-child(2){
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+#family-test2 > li:nth-child(3){
+    font-family: "Noto Serif Dives Akuru", serif;
+}
+
+
+
+
+
+
+
+
+
+
+

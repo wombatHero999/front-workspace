@@ -1,0 +1,96 @@
+img{
+    width: 250px;
+}
+/* 이미지 좌우 이동 */
+.trans-x-2d:hover{
+    transform : translateX(100px);
+}
+/* 상하 이동 */
+.trans-y-2d:hover{
+    transform:translateY(100px);
+}
+.trans-d-2d:hover{
+    transform:translate(100px , 100px);
+}
+.trans-x-scale-2d:hover{
+    transform:scaleX(2)
+}
+.trans-y-scale-2d:hover{
+    transform:scaleY(0.8);
+}
+.trans-scale-2d:hover{
+    transform: scale(2,2);
+}
+.trans-rotate:hover{
+    transform:rotate(180deg);
+}
+
+.trans-3d:hover{
+    transform: perspective(300px)  translate3d(50px, 50px, 100px);
+}
+
+.trans-rotate-x-3d:hover{
+    transform : perspective(300px) rotateX(45deg)
+}
+.trans-rotate-y-3d:hover{
+    transform: perspective(300px) rotateY(-45deg)
+}
+.trans-rotate-z-3d:hover{
+    transform:perspective(300px) rotateZ(45deg);
+}
+.trans-rotate-3d:hover{
+    transform:perspective(300px) rotate3d(0.5,0.5,1,45deg);
+    /* 
+        rotated3d(x,y,z,회전각도)
+        x,y,z는 0~1사이의 숫자
+    */
+}
+
+/* transition */
+.box{
+    width: 150px;
+    height: 150px;
+    border : 1px solid black;
+    background-color: red;
+
+    transition: 1s; /* 스타일이 변경되는 시간 지정 */
+}
+
+.test1:hover{
+    background-color: yellow;
+}
+
+.test2{
+    transition-duration: 3s;
+}
+.test2:hover{
+    transform : rotate(360deg);
+    background-color: pink;
+    border-radius: 50%;
+}
+.test3{
+    transition-duration:3s;
+    transition-timing-function : cubic-bezier(0,-0.87,.4,2.03) ;
+}
+.test3:hover{
+    background-color: springgreen;
+    transform:rotate(720deg);
+}
+.test4{
+    transition-delay: 1s;
+    transition-property: all;
+}
+#check:checked+.test4{
+    background-color: yellow;
+    font-size: 50px;
+    transform: translateX(100px);
+}
+
+
+
+
+
+
+
+
+

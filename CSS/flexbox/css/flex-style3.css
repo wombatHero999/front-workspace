@@ -1,0 +1,61 @@
+.flex-container{
+    height: 400px;
+    background-color: #ddd;
+    display: flex;
+}
+/* order */
+/* item들의 순서를 지정하는 속성
+   기본값 0, 정수, 양수/음수 지정가능
+*/
+.order1{order:1}
+.order2{order:2}
+.order3{order:3}
+.order4{order:4}
+.order5{order:5}
+
+/* flex-grow
+    - item이 flex-container의 빈 공간을 매꿀 수 있도록
+    팽창하는 정도를 지정하는 속성
+    기본값 0
+*/
+.grow1{flex-grow:1;}
+.grow2{flex-grow:2;}
+.grow3{flex-grow:3;}
+
+/* 
+    flex-shrink
+     - item이 수축하는 정도를 지정하는 속성
+       기본값 1
+*/
+.shrink0{flex-shrink: 0;}
+.shrink1{flex-shrink: 1;}
+.shrink2{flex-shrink: 2;}
+.shrink3{flex-shrink: 3;}
+
+/*
+    flex-basis
+     - main axis방향으로의 기본 크기을 지정하는 속성
+*/
+.basis-150px{flex-basis:150px;}
+.basis-10{flex-basis:10%;}
+.basis-25{flex-basis:25%;}
+
+/* flex
+   flex-grow , flex-shrink, flex-basis
+   를 동시에 부여하는 속성
+*/
+.flex1{flex: 0 0 100px}
+
+/* 
+    align-self 
+    - 각 item별 cross axis방향으로 정렬하는 속성
+*/
+.self-start{align-self:flex-start;}
+.self-end{align-self:flex-end;}
+.self-center{align-self:center;}
+
+
+
+
+
+
