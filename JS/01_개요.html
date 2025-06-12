@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 개요</title>
+    <link rel="stylesheet" href="./css/1.css">
+  
+</head>
+<body>
+    <!--
+        웹의 3요소
+        1. HTML : 웹 문서의 큰 틀
+        2. CSS  : 웹 문서의 스타일
+        3. JS   : 웹 문서상의 동적인 이벤트
+    -->
+    <h1>자바스크립트 개요</h1>
+    <pre>
+        Javascript
+         - html의 조작과 변경을 담당하는 언어
+         - html로 웹 문서의 틀을 만들고, css로 디자인을 정의하며 , js로 웹페이지상의 이벤트가 발생
+           했을때 실행할 동작을 정의한다. 
+         - 웹 브라우저에서 실행 가능한 인터프리터방식의 스크립트 언어 
+          * 인터프리터 : 컴파일 없이 한줄 씩 실행되는 언어
+
+        장점
+         - 코드를 작성한 후 바로 실행결과를 볼 수 있기 때문에 간단한 개발에 용이하다. 
+         - 클래스,접근제한자, 반환형등 고급 개념이 없이 사용가능하기 때문에 초보자가 다루기 쉽다. 
+         - 웹브라우저의 기본 스크립트 언어로 범용성이 넓다. 
+
+        단점
+         - 컴파일방식의 언어보다 실행속도가 느리다. 
+         - 큰규모의 어플리케이션 개발에 있어서 "타입 안전성"이 부족하다.
+    </pre>
+    <h2>1. 자바스크립트 사용방법</h2>
+    <ol>
+        <li>inline 방식 : 이벤트를 부여하고자 하는
+            요소 내에 간단한 소스코드를 작성해서 실행시키는 방법
+            <input type="button" value="실행1"             
+            onclick="console.log('셰쎼');">
+        </li>
+        <li>
+            internal 방식 : 현재문서 내부에서 script 태그 영역에 소스코드를
+            작성하여 실행하는 방법
+            <input type="button" value="실행2" onclick="abc();">
+        </li>
+        <li>
+            external 방식 : 현재무서 외부에서 별도의 js파일을 생성한 후 가져다가
+            실행하는 방식
+
+        </li>
+    </ol>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <script src="./js/sample.js"></script>
+    <script>
+        abc();
+        // 선언형 함수
+        function abc(){
+            alert('버튼클릭했나요?');
+        }
+        
+    </script>
+</body>
+</html>
