@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>셀렉터</title>
+    <style>
+        table{
+            border : 1px solid black;
+            margin: 30px 0;
+            border-collapse : collapse;
+        }
+        th, td{
+            border : 1px solid black;
+            padding : 10px;
+            text-align: center;
+        }
+        td.on{
+            background-color: royalblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>셀렉터(Get Element)</h1>
+    <ul>
+        <li id="myli1" class="group">요소1</li>
+        <li id="myli2" class="group">요소2</li>
+        <li id="myli3" class="group">요소3</li>
+        <li id="myli4" class="group">요소4</li>
+        <li id="myli5" class="group">요소5</li>
+    </ul>
+    <input type="button" value="id" onclick="test1()">
+    <input type="button" value="tag name" onclick="test2()">
+    <input type="button" value="class" onclick="test3()">
+
+    <script>
+        function test1(){
+            // 요소선택시 항상 document객체를 
+            // 바탕으로 요소를 선택.
+            // document ? 
+            //  - html의 정보를 파싱하여 변환된
+            //    js object를 가지고 있는 객체
+            var li = document.getElementById("myli1");
+            var li = document.querySelector("#myli2");
+
+            // js로 요소 선택 후, 선택된 요소의 속성에 접근
+            // 하여 원하는 값으로 변경할 수 있다.
+            // 선택된요소.접근할속성명
+
+            console.log(li.style.color);// color의 값을 가져오는(getter)
+
+            li.style.color = "white";// color에 값을 대입(setter)
+            li.style.backgroundColor = "magenta";
+
+            console.log(li);
+
+            // id값은 브라우저별로 window에 속성으로
+            // 등록된 경우가 있음
+            myli1.style.color = "red";
+        }
+
+        function test2(){
+            var arr = document.getElementsByTagName("li");
+            console.log(arr);
+            console.log(arr[4]);
+            
+            for(var i =0; i<arr.length; i++){
+                console.log(arr[i]);
+                arr[i].style.color = "rgb(130,220,50)";
+            }
+
+            var arr2 = document.querySelectorAll("li");
+            console.log(arr2);
+
+        }
+
+        var test3 = function(){
+            var groups = document.getElementsByClassName('group');
+            groups = document.querySelectorAll('.group');
+            console.log(groups);
+        }
+    </script>
+
+    <fieldset style="margin-top: 30px;">
+      <legend>취미</legend>
+      <!-- (input:checkbox[name =hobby][value]#hobby$+label[for=hobby$])*3 -->
+      <input type="checkbox" name="hobby" id="hobby1" value="음악감상"><label for="hobby1">음악감상</label>
+      <input type="checkbox" name="hobby" id="hobby2" value="영화시청"><label for="hobby2">영화시청</label>
+      <input type="checkbox" name="hobby" id="hobby3" value="게임"><label for="hobby3">게임</label>
+      <br><br>
+      <input type="button" value="name" onclick="test4();">
+    </fieldset>
+
+    <script>
+        // 체크한 체크박스의 값 가져오기.
+        function test4(){
+            var hobbies = document.querySelectorAll('fieldset > input[type=checkbox]');
+            var hobbies = document.getElementsByName("hobby");
+            console.log(hobbies);
+
+            for(var i =0; i< hobbies.length; i++){
+                var hobby = hobbies[i];
+                if(hobby.checked){
+                    console.log(hobby.value);
+                }
+            }
+        }
+    </script>
+
+    <fieldset>
+        <legend>이메일 입력</legend>
+        <input type="email" name="userEmail" id="userEmail" placeholder="이메일을 입력하세요." value="">
+        <input type="button" value="확인" onclick="test5();">
+    </fieldset>
+
+    <script>
+        /*
+            #userEmail를 선택한 후 , 확인버튼을 눌렀을 때, 입력한
+            값이 존재하지 않는 경우 "입력한 값이 없습니다"를
+            콘송창에 출력하고, 입력한 값이 있는경우 입력한 값을 콘솔창에 출력
+        */
+        function test5(){
+            var email = document.querySelector("#userEmail");
+            if (email.value == ""){
+                console.log("저장된 값이 없습니다.");
+            }else{
+                console.log(email.value);
+            }
+        }
+
+    </script>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

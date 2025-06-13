@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 카테고리 선택</title>
+    <style>
+        .check-btn {
+            color: #0000ff;
+            background-color: #0000ff;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice1</h1>
+
+    <fieldset>
+        <legend>취미</legend>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" id="selectAll" class="check-btn" onclick="selectAll();"/>
+                    <label for="selectAll">전체 선택</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category1" value="종합"
+                    onclick="checkCategory(this);"/>
+                    <label for="category1">종합</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category2" value="소설" 
+                    onclick="checkCategory(this);"/>
+                    <label for="category2">소설</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category3" value="시/에세이"
+                    onclick="checkCategory(this);"/>
+                    <label for="category3">시/에세이</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category4" value="경제/경영"
+                    onclick="checkCategory(this);"/>
+                    <label for="category4">경제/경영</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category5" value="자기계발"
+                    onclick="checkCategory(this);"/>
+                    <label for="category5">자기계발</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category6" value="아동"
+                    onclick="checkCategory(this);"/>
+                    <label for="category6">아동</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>               
+                <td>
+                    <input type="checkbox" name="category" id="category7" value="여행"
+                    onclick="checkCategory(this);"/>
+                    <label for="category7">여행</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category8" value="과학"
+                    onclick="checkCategory(this);"/>
+                    <label for="category8">과학</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category9" value="역사/문화"
+                    onclick="checkCategory(this);"/>
+                    <label for="category9">역사/문화</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category10" value="외국어"
+                    onclick="checkCategory(this);"/>
+                    <label for="category10">외국어</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category11" value="컴퓨터"
+                    onclick="checkCategory(this);"/>
+                    <label for="category11">컴퓨터</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="category" id="category12" value="만화"
+                    onclick="checkCategory(this);" />
+                    <label for="category12">만화</label>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <br><br>
+    <button onclick="printCategory()">카테고리 선택</button><br>
+    <div id="area" class="area area-js" style="border : 1px solid red; width:100%; height:300px;">
+    </div>
+    <script>
+        /* 1번 기능(출력기능)
+            체크 박스 선택 후 카테고리 선택을 누르면 하단 네모에 선택한 카테고리 출력.
+
+        */
+        function printCategory(){
+        }
+
+        /* 2번기능 (전체선택기능).
+         전체선택 체크박스 선택시 모든 카테고리가 선택되며, 선택 해제서 모든 체크박스가 선택 해제. 
+    
+        */
+        function selectAll(){
+        }
+
+        /* 3번기능 (카테고리 체크박스 선택시 전체선택 체크박스 제어 기능)
+           카테고리 체크박스를 전부 선택하면 전체선택 체크박스가 선택되고 
+           하나라도 선택이 되어있지 않으면 전체선택 체크박스는 선택 해제
+        */
+        function checkCategory(){
+
+        }
+
+
+    </script>
+</body>
+</html>

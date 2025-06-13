@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js - String | Math | Date</title>
+</head>
+
+<body>
+    <h1>js api들</h1>
+    <h1>String</h1>
+    <input type="button" value="실행" onclick="test1();">
+    <input type="button" value="@실습문제" onclick="test2();">
+
+    <script>
+        //String 내장 객체
+        function test1() {
+            var str = "Samsung Apple Xiomi";
+            console.log(str.length); // length 속성
+            console.log(str.toUpperCase());
+            console.log(str.indexOf("ms"));
+            console.log(str.lastIndexOf("i"));
+            console.log(str.charAt(0));
+            console.log(str[0]); // 문자배열로 취급.
+
+            // 문자열의 일부 문자를 리턴
+            // ms문자만 자르기
+            console.log(str.substring(2, 4));
+            console.log(str.substring(2));
+
+            console.log(str.substr(2, 2)); //ms
+            console.log(str.substr(2));
+
+            var arr = str.split(" ");
+            console.log(arr);
+        }
+
+        function test2() {
+            /**
+            * 두개의 인자 문자열과 문자를 입력받고, 
+            * 문자열에서 문자가 몇번 출현하는지 리턴하는 함수를 생성
+            * 
+            * countChar("hahaha", "a") => 3
+            * countChar("abccba", "c") => 2
+            * countChar("abcde", "x") => 0
+            */
+            var result = countChar("abcde", "x");
+            console.log(result);// 3
+        }
+        function countChar(str, ch) {
+            let count = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (ch == str[i]) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    </script>
+
+    <h1>Math</h1>
+    <input type="button" value="실행" onclick="test3();">
+    <script>
+        const test3 = function () {
+            let num = 123.456;
+
+            console.log(Math.round(num));
+            console.log(Math.ceil(num));
+            console.log(Math.floor(num));
+            console.log(Math.random());
+        };
+    </script>
+
+    <input type="button" value="@실습문제" onclick="test4();">
+    <ul id="test-rnd">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script>
+        function test4() {
+            /* 
+            * #test-rnd 하위의 li태그에 1 ~ 100사이의 난수를 대입하세요.
+            * 단, 짝수라면 글자색을 예쁘게(?) 할것.
+            */
+            var lis = document.querySelectorAll("#test-rnd > li");
+            for (let i = 0; i < lis.length; i++) {
+                let random = Math.floor((Math.random() * 100 + 1));
+                lis[i].innerHTML = random;
+
+                if(random % 2 == 0){
+                    lis[i].style.color ="pink";
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

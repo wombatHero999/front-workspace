@@ -26,7 +26,7 @@
         장점
          - 코드를 작성한 후 바로 실행결과를 볼 수 있기 때문에 간단한 개발에 용이하다. 
          - 클래스,접근제한자, 반환형등 고급 개념이 없이 사용가능하기 때문에 초보자가 다루기 쉽다. 
-         - 웹브라우저의 기본 스크립트 언어로 범용성이 넓다. 
+         - 웹 브라우저의 기본 스크립트 언어로 범용성이 넓다. 
 
         단점
          - 컴파일방식의 언어보다 실행속도가 느리다. 
@@ -47,10 +47,67 @@
         <li>
             external 방식 : 현재무서 외부에서 별도의 js파일을 생성한 후 가져다가
             실행하는 방식
-
         </li>
     </ol>
 
+    <button id="btn">콘솔창 출력</button>
+    <script>
+        // 내부방식만으로 요소에 이벤트 부여하기.
+        // 어떤 요소에 어떤 이벤트가 발생할지를 정하고
+        // 그 이벤트가 실행될 때의 동작을 정의.
+        document.querySelector("#btn").onclick = function (){
+            console.log('하이');
+        }        
+    </script>
+
+    <h2>2. 자바스크립트의 자료형</h2>
+    <button onclick="dataType();">자료형</button>
+    <script>
+        function dataType(){
+            // 변수 선언시 사용되는 키워드
+            // 1. var(es5)
+            // 2,3 . let , const(es6)
+
+            var i; // undefined
+            console.log(i, typeof(i));
+
+            // 값 대입이 이루어질 때 변수의 타입이
+            // 결정된다.
+            i = 100;
+            i = 1.23;
+            console.log(i, typeof i);
+
+            i = 'js is fun';
+            console.log(i , typeof i);
+
+            i = true;
+            console.log(i, typeof i);
+
+            // 자바스크립트에서는 function도 자료형
+            // 으로 값처럼 취급된다.
+            i = function (x,y) {
+                return x+y;
+            };
+            console.log(i , typeof i , i(1,2));
+            // 객체 자료형
+            // 배열도 하나의 객체(object)
+            i = [1,2,3,4];
+            // List<Obejct>와 비슷
+            console.log(i, typeof i);
+            
+            // Map< String|Number, Object>
+            i = {
+                name : '치킨',
+                taste : '후라이드',
+                price : 19000
+            };
+            console.log(i, typeof i);
+
+            // null , null
+            i = null; // object자료형
+            console.log(i, typeof i);
+        }
+    </script>
 
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -62,7 +119,6 @@
         function abc(){
             alert('버튼클릭했나요?');
         }
-        
     </script>
 </body>
 </html>
