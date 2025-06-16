@@ -13,10 +13,15 @@
     <input type="button" value="전역 | 지역" onclick="test1();">
     <input type="button" value="scope" onclick="test2();">
     <input type="button" value="개선" onclick="test3();">
+    <script>
+        //console.log(a);
+    </script>
 
     <script>
         var a; // 전역변수(window객체의 속성으로 등록)
         a = 100;
+        //let a2;
+        //const b2;
 
         function test1() {
             var a = "아"; // 지역변수

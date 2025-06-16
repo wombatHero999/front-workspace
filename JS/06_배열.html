@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+
+<body>
+    <h1>Array</h1>
+    <h2>배열생성</h2>
+    <input type="button" value="생성" onclick="test1();">
+    <input type="button" value="초기화" onclick="test2();">
+
+    <script>
+        function test1() {
+            // javascript의 배열은 크기제한 x, 타입제한 x
+            // Java의 ArrayList<Object>와 비슷
+            const arr1 = []; // 주소값은 그대로
+            const arr2 = new Array();
+            const arr3 = new Array(3);
+            console.log(arr1, arr2, arr3);
+
+            // 값대입
+            arr1[0] = 'a';
+            arr1[1] = 'b';
+            // 2 : empty
+            // 3 : empty
+            arr1[4] = 'c';
+
+            console.log(arr1, arr1.length, arr1[2]);
+
+            // 반복문
+            // 기본 반복문
+            for (let i = 0; i < arr1.length; i++) {
+                console.log(arr1[i]);
+            }
+
+            // 향상된 반복문
+            // 1. for..of문
+            // 배열객체에서 사용하는 반복문으로, 각 인덱스에 담겨있는
+            // 값을 변수로 꺼내서 사용가능(자바의 for each문과 유사)
+            for (let item of arr1) {
+                console.log(item);
+            }
+
+            // 2.for..in문 
+            //  - 배열뿐 아니라 객체 또한 반복시킬 수 있는 반복문
+            //  - 객체({})의 key값을 저장할 수 있는 변수가 필요
+            for (let index in arr1) {
+                console.log(index, arr1[index]);
+            }
+            const obj = {
+                0: "a",
+                name: "mkm",
+                age: 20
+            };
+            for (let key in obj) {
+                console.log(obj[key]);
+            }
+        }
+
+        function test2() {
+            const arr1 = [1, 2, 3];// int[] arr = {1,2,3};
+            const arr2 = new Array("철수", "영희", "김밥");
+
+            const arr3 = [1, 2, 3,
+                "안녕",
+                true,
+                { id: 'mkm' },
+                ['a', 'n', 'c'],
+                function () { console.log('ㅋㅋ') }];
+            arr3[7]();
+        }
+    </script>
+
+
+    <h2>Array Method</h2>
+    <input type="button" value="indexOf" onclick="test3();">
+    <input type="button" value="concat" onclick="test4();">
+    <input type="button" value="join" onclick="test5();">
+    <input type="button" value="reverse" onclick="test6();">
+    <input type="button" value="sort" onclick="test7();">
+    <input type="button" value="push | pop " onclick="test8();">
+    <input type="button" value="unshift | shift" onclick="test9();">
+    <input type="button" value="slice" onclick="test10();">
+    <input type="button" value="splice" onclick="test11();">
+    <input type="button" value="@실습문제" onclick="test12();">
+    <input type="button" value="forEach" onclick="test13();">
+    <input type="button" value="find,filter,map" onclick="test14();">
+    <ul id="hobby-list"></ul>
+
+    <hr>
+    <ul id="drink">
+        <li>coke</li>
+        <li>juice</li>
+        <li>coffee</li>
+        <li>beer</li>
+        <li>wine</li>
+        <li>soju</li>
+    </ul>
+    <!-- input:b[onclick] -->
+    <input type="button" value="@실습문제#drink" onclick="test15();">
+
+    <script>
+        const test3 = function () {
+            const arr1 = ['a', 'b', 'c'];
+            console.log(arr1.indexOf('a'));
+            console.log(arr1.indexOf('b'));
+            console.log(arr1.indexOf('d'));
+        };
+
+        const test4 = function () {
+            const arr1 = [1, 2, 3, 4, 5];
+            const arr2 = [6, 7, 8, 9, 10];
+            const arr3 = arr1.concat(arr2);
+            console.log(arr3);
+        };
+
+        const test5 = function () {
+            // join : 배열 내부의 요소를 하나의 문자열로 합쳐서 리턴
+            const arr = [1, 2, 3, 4, 5];//12345
+            const str = arr.join(""); // 기본값은 ,로 연결
+            console.log(str);
+        }
+
+        const test6 = function () {
+            // reverse : 배열의 순서를 뒤집은 값을 리턴
+            //  * 원본 배열의 값이 바뀐다.
+            const arr = [1, 2, 3, 4, 5];
+            arr.reverse();
+            console.log(arr);
+        };
+
+        const test7 = function () {
+            const arr = [4, 2, 3, 1, 15];
+            arr.sort(); // 기본값 : 사전등록순서상(문자열) 오름차순 정렬
+
+            console.log(arr);
+
+            // 정수 기준 오름차순 정렬
+            const arr2 = [1, 2, 15]; // 1 2 15, 1 15 2
+
+            arr2.sort(function (a, b) {
+                //return a - b; // 오름차순
+                return b - a; // 내림차순
+            });
+            console.log(arr2);
+
+            const arr3 = ["홍길동", "김길동", "라마단", "다나가"];
+            arr3.sort();
+            console.log(arr3);
+            arr3.sort((a, b) => {
+                // 양수, 음수(자리이동), 0
+                return b.charCodeAt() - a.charCodeAt();
+                // if(a > b) return -1;
+                // if(a < b) return 1;
+                // return 0;
+            });
+            console.log(arr3);
+        };
+
+        const test8 = () => {
+            /*
+                push: 배열에 요소를 추가한 후, 변경된 길이를 반환
+                pop : 배열의 마지막 요소를 제거하고, 제거된 요소를 반환
+            */
+            const arr = [];
+            arr.push(1);
+            arr.push(2);
+            arr.push(3);
+            console.log(arr);
+
+            arr.pop();
+            console.log(arr);
+            console.log(arr.pop());
+            console.log(arr);
+        };
+
+        const test9 = function () {
+            /* 
+                unshift 배열 0번째 인덱스에 요소를 추가 후 변경된 길이 반환
+                shift 배열의 0번째 요소를 제거 후 제거된 요소를 반환
+            */
+            const arr = ['사과', '배', '포도'];
+
+            arr.unshift('토마토');
+            const fruit = arr.shift();//토마토 
+            console.log(arr, fruit);
+        };
+
+        const test10 = function () {
+            // slice(시작인덱스, 종료인덱스(미포함))
+            const arr = ['COKE', 'PIZZA', 'BUGER', 'KIMCHI'];
+            const arr2 = arr.slice(1, 3);
+            const arr3 = arr.slice();// 깊은복사
+
+            console.log(arr, arr2);
+            console.log(arr3);
+        };
+
+        const test11 = function () {
+            /* 
+                splice : 배열 내부의 요소 추가 & 제거
+                splice(시작인덱스, 삭제할 갯수, 추가할요소1,요소2,...)
+            */
+            const arr = ['a', 'b', 'c', 'd', 'e'];
+
+            // a x y c d e
+            arr.splice(1, 1, 'x', 'y');
+
+            // a x k h e
+            arr.splice(2, 3, 'k', 'h');
+
+            console.log(arr);
+        };
+
+        const test12 = function () {
+            /**
+             * prompt를 이용해 사용자의 취미리스트를 입력받으세요.
+             * 예) 농구,수영,캠핑,낚시
+             * ,구분자로 잘라서 배열로 담은후, 
+             * 사전순 정렬이후, ul#hobby-list의 자식li태그로 추가하세요.     * 
+             */
+            const hobbyList = prompt('취미를 입력하세요');
+            const arr = hobbyList.split(",");
+            arr.sort();
+            const ul = document.querySelector("#hobby-list");
+            for (let hobby of arr) {
+                ul.innerHTML += '<li>' + hobby + "</li>";
+            }
+        }
+
+        const test13 = function () {
+            /* 
+                arr.forEach(함수(element, index){
+                    // 반복적으로 실행할 구문
+                })
+            */
+            const arr = [1, 2, 3, 4, 5];
+            let sum = 0;
+            arr.forEach(function (element, index) {
+                console.log(element, index);
+                sum += element;
+            });
+
+            console.log(sum);
+        };
+
+        const test14 = function () {
+            /* 
+                1. find
+                 - 배열에서 내가 지정한 조건을 만족하는 1개의
+                   요소를 찾은 후 반환하는 메서드
+                2. filter
+                 - 배열에서 내가 지정한 조건들을 만족하는 모든 요소를
+                   찾은 후 배열에 담아서 반환하는 메서드
+                3. map
+                 - 배열안의 데이터를 내가 원하는 요소로 변환시켜 새로운
+                   배열에 담아서 반환하는 메서드
+            */
+            const objArr = [
+                { id: 'alsrudals1', name: '경민1' },
+                { id: 'alsrudals2', name: '경민2' },
+                { id: 'alsrudals3', name: '경민3' },
+                { id: 'alsrudals4', name: '경민4' },
+            ];
+            // find : 내가 원하는 요소를 찾으면 찾은 요소반환,
+            // 찾지 못하면 undefined반환
+            const findItem = objArr.find(e => e.id === 'alsrudals1');
+            console.log(findItem);
+
+            // 조건을 만족하는 요소 여러개(배열)를 반환
+            const filteredArr =
+                objArr.filter(ele => ele.name.includes("경민1"));
+            console.log(filteredArr);
+
+            console.log(filter(objArr, ele => ele.name.includes("경민")));
+
+            // map : 배열 내부의 요소를 원하는 요소로 변경
+            const mappedArr =
+                objArr.map(function (ele) {
+                    return {
+                        newId: ele.id,
+                        newName: ele.name
+                    };
+                });
+            console.log(mappedArr);
+        };
+
+        function filter(arr, func) {
+            // func의 실행결과가 true가 나오는 경우 ,해당요소를
+            // 새로운 배열에 담아서 반환
+            const newArr = [];
+
+            for (let i = 0; i < arr.length; i++) {
+                // func사용자가 전달한 함수
+                if (func(arr[i], i, arr)) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+
+        const test15 = () => {
+            var drink = [];
+            var findOne;
+            var filteredArr;
+            var mappedDrink;
+            var priceArr = [2000, 1600, 4000, 8000, 15000];
+
+            /**
+             * 1) 배열 drink에 #drink태그의 자식li태그 텍스트를 추가. (forEach활용)
+             * ['coke', 'juice', 'coffee', 'beer', 'wine']
+             * 2) 배열 drink에서 'ff'가 들어가는 요소를 선택해서 findOne 반환. (find 활용)
+             *  coffee
+             * 3) 배열 drink에서  'o'가 들어가는 요소들을 선택해서 filteredArr 반환. (filter활용)
+             * ['coke','coffee']
+             * 4) 배열 drink를 활용하여 음료객체 배열을 생성 한후 mappedDrink에 반환(map 활용)     * 
+             * [{"menu": "coke","price": 2000},{"menu": "juice","price": 1600},{"menu": "coffee","price": 4000},
+             *  {"menu": "beer","price": 8000},{"menu": "wine","price": 15000}]
+             */
+            // 1
+            document.querySelectorAll("#drink > li")
+            .forEach(function(element){
+                //console.dir(element)
+                drink.push(element.innerText);
+            });
+            console.log(drink);
+            // 2
+            findOne = drink.find(function(element){
+                if(element.includes('ff')){
+                    return true;
+                }
+            });
+            console.log(2, findOne);
+
+            // 3 
+            filteredArr = drink.filter(function(element){
+                if(element.includes('o')){
+                    return true;
+                }
+            }); 
+            console.log(filteredArr);
+            // 4
+            mappedDrink = drink.map(function(elem, index){
+                const newObj = {
+                    menu : elem,
+                    price : priceArr[index]
+                }
+                return newObj;
+            });
+            console.log(mappedDrink);
+        };
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
