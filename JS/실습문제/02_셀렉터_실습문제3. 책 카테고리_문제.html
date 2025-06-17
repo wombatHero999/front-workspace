@@ -98,27 +98,40 @@
     <script>
         /* 1번 기능(출력기능)
             체크 박스 선택 후 카테고리 선택을 누르면 하단 네모에 선택한 카테고리 출력.
-
         */
         function printCategory(){
+            const checkboxes = document.querySelectorAll("input[type=checkbox][name=category]:checked");
+            const area = document.querySelector("#area");
+
+            checkboxes.forEach(function(checkbox){
+                area.innerHTML += checkbox.value+" ";
+            })
         }
 
         /* 2번기능 (전체선택기능).
          전체선택 체크박스 선택시 모든 카테고리가 선택되며, 선택 해제서 모든 체크박스가 선택 해제. 
-    
         */
         function selectAll(){
+            const selectAll = document.querySelector("#selectAll");
+            const checkboxes = document.querySelectorAll("input[name=category]");
+
+            checkboxes.forEach(function(checkbox){
+                checkbox.checked = selectAll.checked;
+            });
         }
 
         /* 3번기능 (카테고리 체크박스 선택시 전체선택 체크박스 제어 기능)
            카테고리 체크박스를 전부 선택하면 전체선택 체크박스가 선택되고 
            하나라도 선택이 되어있지 않으면 전체선택 체크박스는 선택 해제
         */
-        function checkCategory(){
+        function checkCategory(checkbox){
+            const checkboxes = document.querySelectorAll("input[name=category]");
+            const checkedCheckboxes = document.querySelectorAll("input[name=category]:checked");
+            const selectAll = document.querySelector("#selectAll");
 
+            // 두 배열의 길이가 같다면 모든 요소가 체크된것.
+            selectAll.checked = checkboxes.length == checkedCheckboxes.length;
         }
-
-
     </script>
 </body>
 </html>

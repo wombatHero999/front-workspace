@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+
+<body>
+    <h1>Function</h1>
+    <h2>함수 작성</h2>
+    <script>
+        // 함수 선언식
+        function foo() {
+
+        }
+
+        // 함수 표현식
+        const bar = function () {
+
+        };
+        bar();
+        foo();
+        /*
+            1회용 함수를 작성할 때 사용하는 방법
+            IIFE(Immediatley Invoked Function Expression)
+            (function(){}())
+        */
+        (function abc() {
+            console.log("hello world");
+        })();
+
+        (function () {
+            console.log("goodbye world");
+        }());
+
+        (function (name) {
+            console.log(name + "님 안녕하세요");
+        })('mkm');
+    </script>
+
+    <h2>매개변수 | 매개인자</h2>
+    <input type="button" value="실행" onclick="test1(1, 2, 3); test1('안','녕')">
+    <input type="button" value="실행" onclick="test2();">
+    <script>
+        /*
+            매개변수(parameter)
+             - 함수 선언시 매개인자가 담길 공간
+            매개인자(argument)
+             - 함수 호출시 전달할 값.
+            
+            자바스크립트는 매개변수와 매개인자의 개수가 달라도 
+            실행에 문제 없다.
+        */
+        function test1(x) {
+            console.log("x = " + x);
+
+            // 매개인자를 저장하는 arguments 배열 확인
+            console.log(arguments);
+            for (let argument of arguments) {
+                console.log(argument);
+            }
+        }
+
+        function test2() {
+            add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10); // 55
+            add(12.34, 45.67); // 58.01
+            add('a', 'b', 'c', 'd'); // abcd
+            // 매개인자의 값을 모두 합산하여 출력하는 add매서드
+            // 작성
+        }
+        function add() {
+            let sum = typeof arguments[0] == 'number' ? 0 : '';
+            for (let i of arguments) {
+                sum += i;
+            }
+            console.log(sum);
+        }
+    </script>
+
+    <h2>함수 특징</h2>
+    <input type="button" value="return value" onclick="test3();">
+    <input type="button" value="중첩 함수" onclick="test4(10, 5);">
+
+    <script>
+        function test3(){
+            console.log(foo());
+        }
+        function foo(){
+            //return 100;
+            //return undefined; 
+            // 함수의 return문이 없다면 undefined를 반환. 
+        }
+
+        function test4(a,b){
+            const power = function (n){
+                return n ** 2; // 제곱연산
+            };
+
+            c = Math.sqrt(power(a)+power(b));
+            console.log(c);
+        }
+
+    </script>
+
+    <h2>함수 고급</h2>
+    <input type="button" value="매개인자" onclick="test5();">
+    <input type="button" value="리턴값" onclick="test6();">
+    <input type="button" value="999" onclick="(soo())(999);">
+
+    <script>
+        /*
+            자바스크립트에서 함수는 하나의 값으로 취급된다.
+             - 변수에 대입할 수있고
+             - 함수의 인자로 전달될 수 있고
+             - 함수의 반환값으로 사용될 수 있음을 의미한다.
+        */
+        function test5(){
+            // 함수를 값으로써 전달하기
+            exec(function(n){
+                console.log(n+1+": hello, "+names[n])
+            });
+        }
+        var names = [
+            'html', 'css', 'js', 'jquery', 'java',
+            'oracle', 'mybatis', 'maven', 'lombok', 'spring'
+        ];
+        function exec(fn){
+            // 1: hello, html
+            // 2: hello, css
+            for(var i= 0; i< names.length; i++){
+                fn(i);
+            }
+        }
+
+        function test6(){
+            let a = 1;
+            // 리턴값으로 함수를 반환하기
+            const hello = returnFunction('say');
+            
+            const hello2 = function(name){
+                console.log('say'+' '+name);
+            }
+
+            hello('js');
+
+            returnFunction('good bye')('js');
+            (function(name){
+                console.log('good bye'+' '+name);
+            })('js')
+        }
+
+        function returnFunction(say){
+            let b = 2;
+            return function(name){
+                console.log(say+' '+name);
+            }
+        }
+        //(soo())(999)
+        function soo(){
+            return function(n){
+                console.log(n);
+            }
+        }
+    </script>
+
+    <h2>Closure</h2>
+    <input type="button" value="globalCounter" onclick="test7();">
+    <input type="button" value="closureCounter" onclick="test8();">
+    <input type="button" value="closureCounter" onclick="test9();">
+    <script>
+        let cnt = 0; // global(script) scope
+        function test7(){
+            // local scope
+            // this <- window
+            // debugger;
+            console.log("global : "+ ++cnt);
+        }
+
+        /* 
+            클로져(Closure) 
+             - 중첩함수에서 하위 함수가 상위함수의 변수를 참조할 때 발생하는 스코프
+             - 하위함수에서 상위함수의 변수값을 참조하는 경우 하위함수의 closure스코프에
+               변수값을 미리 추가해둔다.
+             - 이로인해 스택에서 상위함수의 메모리가 제거되더라도, 상위함수의 변수를 clos
+               ure스코프에서 그대로 가져다 사용할 수 있게 된다.
+        */
+        function funcY(){
+            let num = 100;
+            //console.dir(funcZ);
+            function funcZ(){
+                //debugger;
+                console.log('num=',num);
+            }
+            return funcZ;
+        }
+        const myFn = funcY();
+        //myFn();
+
+        function makeClosureCounter(){
+            let cnt = 0;
+            return function(){
+                console.log("closureScope : "+ ++cnt);
+            }
+        }
+        const test8 = makeClosureCounter();
+        const test9 = makeClosureCounter();
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -37,7 +37,7 @@
             obj2.price = 3000;
             // 객체 내부 속성에 접근하는 방법
             // 1) 점 표기법(dot notation)
-            // 2) 대괄호 표기법(bracket noation)
+            // 2) 대괄호 표기법(bracket notation)
             //  - 리터럴값 혹은 값을 저장한 변수를 제시
             obj2["origin"] = '필리핀';
             obj2["ty-pe"] = "건망고";
@@ -78,46 +78,248 @@
     <script>
         let game;
 
-        function test3(){
+        function test3() {
             game = {
-                title : 'DIABLO4',
-                price : 35000,
-                lang: ['ko','en','cn'],
-                run : function(){
-                    console.log(this.title+"을 실행합니다...");
+                title: 'DIABLO4',
+                price: 35000,
+                lang: ['ko', 'en', 'cn'],
+                run: function () {
+                    console.log(this.title + "을 실행합니다...");
                     // 시작시간 기록
                     this["start-time"] = new Date();
                 },
-                shutdown : function(){
-                    console.log(this.title+"을 종료합니다...");
+                shutdown: function () {
+                    console.log(this.title + "을 종료합니다...");
                     // 종료시간 기록
                     this["end-time"] = new Date();
                 },
-                duration : function(){
+                duration: function () {
                     let dur = (this["end-time"] - this["start-time"]) / 1000 / 60;// 분단위
-                    dur = Math.floor(dur * 10) / 10; 
-                    console.log(dur+"분 동안 게임하셨네요"); 
+                    dur = Math.floor(dur * 10) / 10;
+                    console.log(dur + "분 동안 게임하셨네요");
                 }
             };
 
             // 객체 반복문 돌리기
-            for(let key in game){
+            for (let key in game) {
                 console.log("key : " + key);
                 // console.log("value : " + game.key);
                 // 점 표기법으로 접근, key라는 이름의 속석명을 찾음
-                console.log("value : "+game[key]);
+                console.log("value : " + game[key]);
             }
 
             game.run();
         }
 
-        function test4(){
+        function test4() {
             game && game.shutdown();
+            game && game.duration();
+        }
+
+        function test5() {
+            const student = {};
+            student.name = "홍길동";
+            student["class"] = "G";
+            student["no"] = 33;
+
+            console.log(student);
+
+            // 속성 제거
+            delete student.no;
+            delete student["class"];
+
+            console.log(student);
+        }
+
+
+        function test6() {
+            /* 
+                toString메서드 오버라이딩
+                 - 자바스크립트는 모든 객체가 Object상속받음.
+            */
+            const notebook = {
+                title: '오늘의 일기',
+                content : '오늘은 성겸이가 지각을 했다.',
+                date : new Date(), 
+                toString : function(){
+                    //return this.title+" "+this.content;
+                    let str = "";
+                    for(let key in this){
+                        key != "toString" && 
+                        (str += "key : "+key+" , value : "+this[key]);
+                    }
+                    return str;
+                }
+            };
+            console.log(notebook);
+            console.log(notebook + "1");
+        }
+    </script>
+
+    <h2>객체배열</h2>
+    <input type="button" value="실행" onclick="test7();">
+    <script>
+        function test7(){
+            const pets = [
+                {
+                    name : "꽃분이",
+                    breed : "말티즈",
+                    weight:4.5,
+                    bark : function(){
+                        return this.weight > 10 ?"멍멍":'왈왈';
+                    }
+                } ,
+                {
+                    name : "아랑",
+                    breed : "비숑",
+                    weight:11,
+                    bark : function(){
+                        return this.weight > 10 ?"멍멍":'왈왈';
+                    }
+                } , 
+                {
+                    name : "옥지",
+                    breed : "시바",
+                    weight:9,
+                    bark : function(){
+                        return this.weight > 10 ?"멍멍":'왈왈';
+                    }
+                }
+            ];
+            console.log(pets);
+            
+            for(const pet of pets){
+                console.log(pet.name+"이/가 "+pet.bark()+"짖는다");
+            }
+        }
+    </script>
+
+    <h2>생성자 함수 & Prototype</h2>
+    <input type="button" value="실행" onclick="test8();">
+
+    <script>
+        /* 
+            생성자함수
+             - 자스에서 객체지향 프로그래밍을 지원하는 핵심 기능
+             - 클래스를 정의하기 위한 용도의 함수. 생성자 함수로
+               만든 함수는 new 연산자를 함께 사용해서 호출해야 한다.
+             - 생성자함수는 첫 글자를 클래스 처럼 대문자로 작성하는것이
+               관례
+             - 모든 함수는 보이지 않는 prototype이라는 속성을 가지고 있
+               으며, 이 prototype을 통해 상속을 지원한다.
+            
+            prototype
+             - 함수 정의시 prototype에는 부모객체가 생성되어 저장된다.
+               (부모객체 미정의시에는 object객체가 생성되어 저장된다.)
+        */
+        function Pet(kind, name, breed, weight){
+            // {}
+            // 필드부
+            //  - 생성자 함수 내부에서 this는 현재 생성된 객체의
+            //    주소값을 의미
+            this.kind = kind;
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+
+            // 생성자부
+            // constructor -> class예약어에서 사용 가능
+
+            // 메서드부
+            // this.bark = function(){
+            //     return this.weight > 10 ? '멍멍':'왈왈';
+            // }
+
+            // 현재 클래스의 부모객체에 속성/메서드를 추가하는 방법
+            // Pet객체가 가지는 공통젂인 속성/메서드를 노출시키지
+            // 않고자 할때 사용
+            Pet.prototype.bark = function(){
+                return this.weight > 10 ? '멍멍' :'왈왈';
+            };
+        }
+
+        function test8(){
+            const coco = new Pet("고양이","코코",'브숏',3);
+            console.dir(coco);
+            console.log(coco.bark());
+        }
+
+    </script>
+
+    <h2>자바스크립트 class</h2>
+    <input type="button" value="실행" onclick="test9()">
+
+    <script>
+        // 부모 클래스
+        class Animal{
+            kind;
+            constructor(kind){
+                this.kind = kind;
+            }
+        }
+
+        // 자식클래스
+        class Pet2 extends Animal{
+            // 자바스크립트의 private 접근제한자
+            name;
+            #hobby;
+
+            constructor(name,breed,weight,kind){
+                super(kind);
+                this.name = name;
+                this.breed = breed;
+                this.weight =weight;
+            }
+
+            // 메서드부
+            // get/setter
+            // hobby에 값을 추가하는 setter메서드
+            setHobby(value){
+                this.#hobby = value;
+            }
+            
+            getHobby(){
+                return this.#hobby;
+            }
+
+            // 모던 js의 setter/getter
+            // 접근자 프로퍼티
+            set hobby(value){
+                this.#hobby = value;
+            }
+            get hobby(){
+                return this.#hobby ? this.#hobby : '취미없음';
+            }
+
+            // static메서드
+            static bark(weight){
+                //console.log(this.weight);
+                return weight > 10 ? '멍멍' : '왈왈';
+            }
+
+        }
+
+        function test9(){
+            const cat = new Pet2('코코','브숏',3,'고양이');
+            console.log(cat);
+
+            cat.setHobby("츄르먹기");
+            console.log(cat.getHobby());
+
+            //cat["#hobby"] = "츄르먹기2222"; // 클래스 외부에서 접근 불가
+            //console.log(cat.getHobby());
+
+            cat.hobby = "낮잠자기"; // hobby속성에 대한 setter
+            console.log(cat.hobby);
+            console.log(Pet2.bark(3));
         }
 
     </script>
 
 
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 
 </html>
