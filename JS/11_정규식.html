@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규식</title>
+    <style>
+        #area {
+            margin: 30px 10px;
+        }
+
+        mark {
+            background-color: magenta;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Regular Expression</h1>
+    <input type="button" value="기본" onclick="test1();">
+    <input type="button" value="flag - g | i | m" onclick="test2();">
+    <input type="button" value="anchor - ^ | $" onclick="test3();">
+    <input type="button" value="@실습문제" onclick="test4();">
+    <input type="button" value="." onclick="test5();">
+    <input type="button" value="[]" onclick="test6();">
+    <input type="button" value="@실습문제" onclick="test7();">
+    <input type="button" value="\d \w \s" onclick="test8();">
+    <input type="button" value="( | )" onclick="test9();">
+    <input type="button" value="escaping" onclick="test10();">
+    <input type="button" value="* + ?" onclick="test11();">
+    <input type="button" value="{n,m}" onclick="test12();">
+    <input type="button" value="look around" onclick="test13();">
+    <div id="area"></div>
+
+    <script>
+        /* 
+            정규표현식
+             - 특정규칙을 가진 문자열 집합에 대한 형식언어.
+             - 유효성검사, 검색, 문자열 치환 등을 효율적으로 처리할 수 있다.
+             - 언어에 독립적이다.
+        */
+        const area = document.querySelector("#area");
+        function test1() {
+            // 정규표현식 객체 생성
+            const re1 = new RegExp("[a-z]");
+            const re2 = new RegExp(/[0-9]/);
+            const re3 = /a/; // new RegExp("a") == /a/
+
+            // 정규표현식 내부의 메서드
+            // 1. test() : boolean
+            console.log(re3.test('abcde'));
+            console.log(re3.test('bcdef'));
+
+            console.log(re2.test('mkm1234'));
+            console.log(re2.test('mkm'));
+
+            // 문자열(string)에서 정규 표현식을 활용하는 메서드
+            // 1. match
+            console.log('cba'.match(re1));
+
+            // 2. search
+            //    indexOf와 유사하나 정규표현식을 통해 검사
+            console.log('dfdfdaabbccdd'.search(re3));
+
+            // 3. replace
+            console.log('cabakacada'.replace(/a/g, '!!'));
+
+            // 4. split
+            console.log("사과 배 토마토 양파".split(/\s/))
+        }
+
+        function test2() {
+            /* 
+                정규표현식의 flag문자
+                 - g , i , m
+                 - g global 전역비교를 수행.
+                 - i ignore 대소문자를 구분하지 않고 비교를 수행.
+                 - m multi-line 여러줄(\n)의 문자열에 대한 줄단위 비교 수행.
+            */
+            const str = "Javascript jQuery Ajax";
+            // $& : 정규식으로 검사된 text를 가리키는 예약어.
+            area.innerHTML = str.replace(/a/gi, "<mark>$&</mark>");
+        }
+
+        function test3() {
+            /* 
+                anchor 문자
+                 - ^ 문자열의 시작
+                 - $ 문자열의 끝
+            */
+            const str = "Javascript\nxxx\njQuery\nAjax";
+            //area.innerHTML = str.replace(/^j/gim,"<mark>$&</mark>")
+            area.innerHTML = str.replace(/x$/gim, "<mark>$&</mark>")
+        }
+
+        function test4() {
+            /**
+            * 사용자로부터 문자열을 입력받고(prompt),
+            * k로 시작하면서, h로 끝나는 경우에는 잘하셨습니다.
+            * 아닌 경우, 적합한 문자가 아닙니다. 경고창을 띄우세요.
+            */
+            const str = prompt("문자열을 입력하세요~");
+            const re1 = /^k/;
+            const re2 = /h$/;
+            if (re1.test(str) && re2.test(str)) {
+                alert("잘하셨슨니다");
+            } else {
+                alert("적합한 문자가 아닙니다.")
+            }
+        }
+
+        function test5() {
+            // . 임의의 한글자를 의미
+            const re1 = /^...$/;
+            console.log(re1.test('ab'));// false
+            console.log(re1.test('abc'));// true
+            console.log(re1.test('abcd'));// false
+
+            const re2 = /a.b/g; // 3글자
+            area.innerHTML = "aa aab aaab".replace(re2, '<mark>$&</mark>');
+
+            const re3 = /in..$/;
+            ["goingo", "goin", "gointo", "going"].array.forEach(element => {
+                console.log(re3.test(element));// T , F, T, F
+            });
+
+            const re4 = /^c...k$/;
+            ["ck", "cbk", "cbak", "cbawk", "cbawak"].forEach((element) => {
+                console.log(re4.test(element));
+            });
+        }
+
+        function test6() {
+            /* 
+                [] : 한글자를 의미한다.
+                 대괄호 내부에는 문자의 범위를 표현한다.
+                 대괄호 내부에서 사용하는 특수문자는 문자로써 해석된다.
+                 대괄호 내부에서 시작이 ^인 경우 뒤쪽의 문자를 제외한 나머지 문자
+            */
+            const s = "Javascript jquery Ajax 12345";
+            area.innerHTML = s.replace(/[aji3]/g, "<mark>$&</mark>") // a 또는 j 또는 i또는 3
+            area.innerHTML = s.replace(/[^aj]/g, "<mark>$&</mark>")
+
+            area.innerHTML = s.replace(/[a-z]/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/[A-Z0-9a-z]/g, "<mark>$&</mark>");
+
+            const s2 = "안녕하세요. 전 미국에서 온 james에요. ㅋㅋ";
+            area.innerHTML = s2.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g, "<mark>$&</mark>");
+        }
+
+        function test8() {
+            /*
+                문자 클래스
+                \d decimal 숫자 == [0-9]
+                \w word 영문자, 숫자, _ == [a-zA-Z0-9_]
+                \s space 공백문자,탭,개행문자 == [ \t\n]
+
+                \D 숫자가 아닌 문자 == [^0-9]
+                \W 영문자, 숫자, _가 아닌 문자 == [^a-zA-Z0-9_]
+                \S 공백문자,탭,개행문자가 아닌 문자 == [^ \t\n]
+            */
+            var s = "A1 B2 c3 d_4 e:5' ` ffGG6767--__--!\"@#$%^&*()\t가\n나\n다\n";
+            area.innerHTML = s.replace(/\d/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/[0-9]/g, "<mark>$&</mark>");
+
+            area.innerHTML = s.replace(/\w/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/[a-z0-9_]/gi, "<mark>$&</mark>");
+
+            area.innerHTML = s.replace(/\s/gi, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/[ \t\n]/gi, "<mark>$&</mark>");
+
+            area.innerHTML = s.replace(/\D/gi, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/[^0-9]/gi, "<mark>$&</mark>");
+
+            area.innerHTML = s.replace(/\W/gi, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/\S/gi, "<mark>$&</mark>");
+        }
+
+        function test9(){
+            /*
+                그룹핑
+                () 그룹핑 
+                 | or연산자
+            */
+var s = "월요일에는 월요병, 화요일은 화가 부글부글, " 
++ "수요일은 술이 확 땡긴다. 목요일이 목이 컥 막히고, 금요일은 금방 올거 같지 않다.";
+            const re1 = /[수목금]요일/g;
+            const re2 = /(수|목|금)요일/g;
+            const re3 = /(수요일|목요일|금요일)/g;
+            area.innerHTML = s.replace(re1,"<mark>$&</mark>");
+            area.innerHTML = s.replace(re2,"<mark>$&</mark>");
+        }
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
