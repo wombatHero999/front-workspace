@@ -14,13 +14,20 @@
 	</p>
 	가산기 : <input type="number" id="myadder" >
 	<button onclick="addFunc();">실행</button>
+	<button onclick="addFunc2();">실행</button>
 	<script>
 		// 전연변수 사용금지. 클로저를 활용할것.
 		function mkAddFunc (){
-
+			let num = 0;
+			return function(){
+				const myadder = document.querySelector("#myadder");
+				num += myadder.value * 1;
+				console.log(num);
+			}
 		} 
 
 		var addFunc = mkAddFunc();
+		var addFunc2 = mkAddFunc();
 	</script>
 </body>
 </html>

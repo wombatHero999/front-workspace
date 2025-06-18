@@ -118,25 +118,25 @@
             // setInterval(function () {
             //     console.log(num++);
             // }, 1000);
-            function foo(){
+            function foo() {
                 const now = new Date();
                 const strFormat = getTimeFormat(now);
                 // 00:00:00
                 document.querySelector("#clock").innerHTML = strFormat;
             }
 
-            function getTimeFormat(time){
+            function getTimeFormat(time) {
                 var hh = format(time.getHours());
                 var mm = format(time.getMinutes());
                 var ss = format(time.getSeconds());
 
-                function format(n){
-                    return n < 10 ? "0"+n : n; 
+                function format(n) {
+                    return n < 10 ? "0" + n : n;
                 }
-                return [hh , mm , ss].join(":");
+                return [hh, mm, ss].join(":");
                 //return hh+":"+mm+":"+ss;
             }
-            setInterval( foo , 1000)
+            setInterval(foo, 1000)
         }
         /*
             실습문제
@@ -145,8 +145,22 @@
             0도달시 카운트다운 종료.
             inertval종료 -> clearInterval
         */
-        function test7(){
+        function test7() {
+            const intervalId = setInterval(f, 1000);
+            let count = 10;
+            function f() {
+                const countdown = document.querySelector("#countdown");
+                countdown.innerHTML = count--;
+                countdown.style.display = "block";
 
+                if(count <= 0){
+                    clearInterval(intervalId);
+                    countdown.innerHTML = "뻥!";
+                }
+//
+            }
+
+            //clearInterval(intervalId);
         }
 
 
