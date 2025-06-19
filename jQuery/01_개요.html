@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>jQuery 개요</h1>
+    <h3>jQuery란</h3>
+<pre>
+기존에 자바스크립트 언어 만으로 구현하기에
+복잡했떤 구문 작성들을 간소화 하기 위해 개발된 Javascript기반 라이브러리. 
+즉, Javascript방식으로 작성된 유용한 함수 및 메서드들이 정의되어 있다. 
+
+복잡한 자바스크립트 구문을 보다 짧고 쉽게 개발할 수 있어 생산성이 크게 향
+상된다 
+
+DOM요소와 관련된 조작기능이나, 이벤트 처리기능, AJAX기능, 추가 확장 플러그
+인등 다양한 기능들을 제공한다.
+</pre>
+
+<hr>
+
+<h3>jQuery 라이브러리 연결 방법</h3>
+<p>
+    head태그 내부에 script태그로 jQuery관련 .js파일 가져오기 <br>
+    1. jQuery라이브러리를 사이트에서 직접 다운로드 받은 후 경로를 지정하는 오프라인 방식 <br>
+    <script src="./resources/jquery_3.7.1.js"></script>
+
+    2. CDN(Content Delivery Network)를 통한 다운로드 방식(온라인 방식)<br>
+     - jquery라이브러리를 제공하는 사이트 url을 src연결경로로 지정
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</p>
+
+<hr>
+
+<h3>jQuery 구문 작성</h3>
+<p>
+    <b>
+        jQuery구문으로 DOM요소를 다루는 구문을 작성할 예정이며, jQuery명령어들은
+        문서상의 모든 html요소들이 로드 된 후에 실행 되어야 한다. 
+    </b>
+    <br><br>
+    - 순수 자바스크립트로 html페이지가 모두 로드된 이후에 코드가 실행되게 하려면
+    <pre>
+        window.onload = function(){
+            // 실행내용
+        }
+    </pre>
+    - jquery에서의 onload함수
+    <pre>
+        1) jQuery(document).ready(function(){
+            실행내용;
+        });
+
+        2) $(document).ready(function(){
+
+        });
+
+        3) $(function(){
+            실행내용;
+        });
+    </pre>
+
+    <script>
+        jQuery(document).ready(function(){
+            console.log('문서 로딩 완료');
+        });
+
+        $(document).ready(function(){
+            console.log("문서 로딩 완료 후 실행2")
+        })
+
+        $(function(){
+            console.log("마지막 ready function")
+        });
+
+        console.log("문서 로딩 전 실행되는 함수");
+    </script>
+
+
+</p>
+
+    
+</body>
+</html>

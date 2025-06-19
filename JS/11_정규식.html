@@ -177,21 +177,108 @@
             area.innerHTML = s.replace(/\S/gi, "<mark>$&</mark>");
         }
 
-        function test9(){
+        function test9() {
             /*
                 그룹핑
                 () 그룹핑 
                  | or연산자
             */
-var s = "월요일에는 월요병, 화요일은 화가 부글부글, " 
-+ "수요일은 술이 확 땡긴다. 목요일이 목이 컥 막히고, 금요일은 금방 올거 같지 않다.";
+            var s = "월요일에는 월요병, 화요일은 화가 부글부글, "
+                + "수요일은 술이 확 땡긴다. 목요일이 목이 컥 막히고, 금요일은 금방 올거 같지 않다.";
             const re1 = /[수목금]요일/g;
             const re2 = /(수|목|금)요일/g;
             const re3 = /(수요일|목요일|금요일)/g;
-            area.innerHTML = s.replace(re1,"<mark>$&</mark>");
-            area.innerHTML = s.replace(re2,"<mark>$&</mark>");
+            area.innerHTML = s.replace(re1, "<mark>$&</mark>");
+            area.innerHTML = s.replace(re2, "<mark>$&</mark>");
+        }
+        /*
+            escaping
+             - 메타문자를 실제문자값으로 사용하고자 한다면 \를 통해 이스케이핑 처리한다.
+             - 단, []내부에서는 escaping이 필요 없다.
+        */
+        function test10() {
+            const s = "$12$ \\-\\ $25$";
+            area.innerHTML = s.replace(/\$/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/[$]/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/\$$/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/^\$/g, "<mark>$&</mark>");
         }
 
+        function test11() {
+            /* 
+                수량자
+                a* a가 0개 이상 
+                a+ a가 1개 이상
+                a? a가 0개 혹은 1개 
+            */
+            const s = "aabc abc bc";
+            area.innerHTML = s.replace(/a*b/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/a+b/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/a?b/g, "<mark>$&</mark>");
+        }
+
+        function test12() {
+            /* 
+                수량표현
+                a{5} a가 5개
+                a{2,5} a가 2~5개
+                a{3,} a가 3개 이상
+                a{,4} 존재하지 않는 문법
+            */
+            const s = "aa aba abba abbba";
+            area.innerHTML = s.replace(/ab{2}a/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/ab{1,2}a/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/ab{2,}a/g, "<mark>$&</mark>");
+
+            area.innerHTML = s.replace(/ab*a/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/ab{0,}a/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/ab+a/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/ab{1,}a/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/ab?a/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/ab{0,1}a/g, "<mark>$&</mark>");
+
+            // 1글자의 숫자로 시작하고, 영문자 3글자이상 나오고,
+            //  마침표로 끝나는 문자열을 검사하는 정규식 작성
+            // 조건
+            // 1. 영문자는 대소문자를 구분하지 않는다
+            // 2. 숫자 다음으로 반드시 영문자 3글자 이상 와야한다.
+            // 3. 영문자가 작성된후 마침표 까지 다른 문자는 몇 글자가 들어오든 상관 없다.
+            // true : 1abc안녕하세요. 3xyzkkk. 1ABC.
+            // false : 100 1cbㅋㅋㅋ. 아아아아. 
+            const re = /^\d[a-z]{3,}.*\.$/i;
+
+            ["1abc안녕하세요.", "3xyzkkk.", "1ABC."].forEach(function (s) {
+                console.log(re.test(s)); // true
+            });
+
+            ["100", "1cbㅋㅋㅋ.", "아아아아.", "1가나다abc.", "123abc다나가."].forEach(function (s) {
+                console.log(re.test(s)); // false
+            });
+        }
+
+        function test13(){
+            /*
+                Look Around : 탐색
+
+                1. look ahead(전방탐색)
+                 - 000(?=(re)) : 000다음 re일치하는 패턴을 검색
+                 - 최종 반환되는 패턴은 000만 반환
+                 - 000(?!(re)) : 000다음 re와 일치하지 않는 패턴
+
+                2. look behind(후방탐색)
+                 - (?<=(re))000 : 000앞에 re일치하는 요소를 반환
+                 - (?<!(re))000 : 000앞에 re와 일치하지 않는 요소를 반환
+            */
+            const s = "hello world hello tom hello Jane";
+            area.innerHTML = s.replace(/hello(?=( world))/g, '<mark>$&</mark>');
+            area.innerHTML = s.replace(/hello(?!( world))/g, '<mark>$&</mark>');
+
+            const s2 = "hello world lotte world t world";
+            // world앞에 hello가 들어간 world만 탐색
+            // world앞에 hello가 아닌 문자열이 들어간 world들 탐색
+            area.innerHTML = s2.replace(/(?<=(hello ))world/g, '<mark>$&</mark>');
+            area.innerHTML = s2.replace(/(?<!(hello ))world/g, '<mark>$&</mark>');
+        }
     </script>
 
 
