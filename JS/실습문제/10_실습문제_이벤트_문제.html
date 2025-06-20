@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>js - 실습문제 - 이벤트</title>
   <style>
-  .btn-wrapper {
-    margin: 10px 0;
-  }
+    .btn-wrapper {
+      margin: 10px 0;
+    }
   </style>
 </head>
+
 <body>
   <h1>@실습문제_이벤트</h1>
   <!--  
@@ -34,9 +36,43 @@
     <button type="button" data-url='https://www.iei.or.kr'>KH</button>&nbsp;
     <button type="button" data-url='https://www.w3schools.com'>와삼</button>
   </div>
+  <div class="btn-clone">
+
+  </div>
   <script>
-  
+      document.querySelector("#btn-generate").onclick = function(){
+        // const urlArr = [{
+        //   url: 'https://www.naver.com', value:'네이버'
+        // }]
+        const urlArr = [];
+        
+        const btns = document.querySelectorAll(".btn-wrapper > button");
+        btns.forEach(function(button){
+          const newObj = {
+            url : button.dataset.url,
+            value : button.innerText
+          }
+          urlArr.push(newObj);
+        })
+        console.log(urlArr);
+        const buttonArr = urlArr.map(function(obj){
+            const button = document.createElement("button");
+            const textNode = document.createTextNode(obj.value);
+            button.onclick = function(){
+                location.assign(obj.url);
+            }
+            button.appendChild(textNode);
+            return button;
+        }); 
+        const cloneArea = document.querySelector(".btn-clone");
+        cloneArea.append( ...buttonArr ); // ... 전개연산자
+        // [1,2,3,4,5] => 전개연산자 적용시 []대괄호가 볏겨진다
+        // ...[1,2,3,4,5] => 1,2,3,4,5
+
+        console.log(buttonArr);
+      };
   </script>
 
 </body>
+
 </html>

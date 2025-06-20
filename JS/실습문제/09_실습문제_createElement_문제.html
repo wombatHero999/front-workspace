@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        input, textarea{
+        input,
+        textarea {
             width: 100%;
             resize: none;
             box-sizing: border-box;
         }
-        dl{
+
+        dl {
             border: 1px solid black;
         }
-        ul , li{
+
+        ul,
+        li {
             list-style: none;
             margin: 0;
             padding: 0;
         }
-        li{
+
+        li {
             border: 1px solid black;
         }
-        h5{
+
+        h5 {
             text-align: center;
             color: maroon;
         }
-        p{
+
+        p {
             text-align: justify;
             border: 1px;
             color: blueviolet;
         }
     </style>
 </head>
+
 <body>
-    
+
     <fieldset>
         <legend>게시글 생성</legend>
         <div>
@@ -41,7 +50,7 @@
                 게시글 제목 : <input type="text" name="title">
             </header>
             <section>
-                게시글 내용 : <textarea name="content"  cols="30" rows="10"></textarea>
+                게시글 내용 : <textarea name="content" cols="30" rows="10"></textarea>
             </section>
             <footer style="text-align: center;">
                 <input type="button" value="등록" onclick="insertBoard();">
@@ -52,24 +61,62 @@
     <script>
         /* 
             등록버튼 클릭시 작성한 게시글 제목과 게시글 내용을 ul태그안에 
-            자식 안에 추가할것. 추가시 동적 node생성구문(createElement)를 활용할 것.
+            자식 안에 추가할것. 
+            추가시 동적 node생성구문(createElement)를 활용할 것.
 
             게시글 등록 조건
             1) 게시글 제목과, 내용은 1글자 이상 작성해야 등록되도록 할것
             2) 등록 완료후 작성한 내용을 비워줄것
         */
-        function insertBoard(){
-           
+        function insertBoard() {
+            const title = document.querySelector("input[name=title]");
+            const content = document.querySelector("textarea[name=content]");
+
+            // "" => false , "제목" => true
+            if (!(title.value && content.value)) {
+                console.log("제목이나 내용은 한글자 이상 작성해주세요");
+                return false;
+            }
+
+            // li > h5{w제목} p{내용}
+            const li = document.createElement("li");
+            const h5 = document.createElement("h5");
+            const p = document.createElement("p");
+            const titleTextNode = document.createTextNode(title.value);
+            const contentTextNode = document.createTextNode(content.value);
+
+            li.append(h5, p);
+            h5.appendChild(titleTextNode);
+            p.appendChild(contentTextNode);
+
+            const boardList = document.querySelector("#boardList");
+            boardList.appendChild(li);
+
+            title.value = "";
+            content.value = "";
         }
-        
+
         /* 
             게시글 검색기능. 게시글에 내가 입력한 내용이 포함된 게시글만 필터링 시켜서 보여주는 기능.
             검색내용을 비워둔후 재검색 눌렀을때는 전체 게시글목록이 나와야함.
         */
-        function searchTitle(){
-          
+        function searchTitle() { 
+            const searchValue = document.querySelector("input[name=search]").value;
+            const boardList = document.querySelectorAll("#boardList > li");
+
+            boardList.forEach(function(li){
+                console.log(li.firstChild,li.lastChild, li.childNodes, // 텍스트노드(공백)도 포함에서 가져온다.
+                li.children);
+                const title = li.querySelector("h5").innerText;
+                const content = li.children[1].innerText;
+                if(title.includes(searchValue)){
+                    li.style.display = "block";
+                }else{
+                    li.style.display = "none";
+                }
+            });
         }
-    
+
     </script>
 
     <h1>게시글 목록</h1>
@@ -83,6 +130,7 @@
             <p>게시글내용입니다.</p>
         </li>
     </ul>
-    
+
 </body>
+
 </html>

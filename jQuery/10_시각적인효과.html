@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시각적 효과</title>
+    <script src="./resources/jquery_3.7.1.js"></script>
+    <style>
+        div {
+            background: beige;
+            width: 300px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 10px;
+            border: 1px solid yellow;
+            cursor: pointer;
+        }
+
+        p {
+            border: 1px solid lightgray;
+            width: 300px;
+            height: 100px;
+            margin-top: 5px;
+            border-radius: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>시각적 효과와 관련된 메서드들</h1>
+
+    <h3>* show() , hide() , toggle() </h3>
+    <button id="hide">숨기기</button>
+    <button id="show">보여주기</button>
+    <button id="toggle">토글</button>
+    <br><br>
+
+    <img src="../resources/image/bono.jpg" alt="보노보노" id="bono">
+
+    <script>
+        $(function () {
+            const $bono = $("#bono");
+            $("#hide").click(function () {
+                $bono.hide(300); // 3초의 시간에 걸쳐서 사라진다.
+            });
+            $("#show").click(function () {
+                $bono.show(1000);
+            });
+            $("#toggle").click(function () {
+                $bono.toggle(1000);
+            });
+        })
+    </script>
+
+    <h3>* fadeIn(), fadeOut(), fadeToggle()</h3>
+
+    <img src="../resources/image/peng.jpg" alt="" id="peng">
+
+    <button id="fadeOut">숨기기</button>
+    <button id="fadeIn">보여주기</button>
+    <button id="fadeToggle">토글</button>
+
+    <script>
+        $(function () {
+            $("#fadeOut").click(function () {
+                $("#peng").fadeOut(2000);
+            });
+            $("#fadeIn").click(function () {
+                $("#peng").fadeIn(2000);
+            });
+            $("#fadeToggle").click(function () {
+                $("#peng").fadeToggle(1000);
+            });
+        })
+    </script>
+
+    <h3>* slideDown() 과 slideUp() </h3>
+
+    <div>Q. 반품 언제되나요?</div>
+    <p>A. 지금 확인중입니다.</p>
+
+    <div>Q. 상품 위치를 알고 싶습니다.</div>
+    <p>A. 배송 조회를 해보세요. 거기 다 나와요.</p>
+
+    <div>Q. 이 사이즈 있나요?</div>
+    <p>A. 네 있어요 ^_________^</p>
+
+    <div>Q. 전화 통화 가능한 시간을 알려주세요.</div>
+    <p>A. 플러스친구 카톡을 활용하면 24시간 내에 답변드리겠습니다.</p>
+
+    <div>Q. 판매자가 연락이 안됩니다.</div>
+    <p>A. 신고하세요.</p>
+
+    <script>
+        $(function () {
+            $("div").click(function () {
+                const $p = $(this).next();
+
+                if($p.css("display") == "none"){
+                    // 기존에 열린 요소들 닫기
+                    $p.siblings("p").slideUp();
+
+                    $p.slideDown(1000);
+                }else{
+                    $p.slideUp(1000);
+                }
+            })
+        });
+    </script>
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

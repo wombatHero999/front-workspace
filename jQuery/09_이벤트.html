@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script src="./resources/jquery_3.7.1.js"></script>
+</head>
+
+<body>
+    <h1>이벤트 연결 방법 종류</h1>
+
+    <h3>* 1. 이벤트 메서드를 통한 연결</h3>
+    <h4 id="test1">여길클릭하세요</h4>
+
+    <script>
+        $(function () {
+            $("#test1").click(function () {
+                $(this).html("여길 더블클릭 하세요");
+            });
+            $("#test1").dblclick(function () {
+                $(this).html("여기에 마우스를 올려보세요");
+            });
+        })
+    </script>
+
+    <h3>* 2. on 메소드를 이용한 연결</h3>
+    <h4 id="test2">여기 마우스를 올려보세요</h4>
+
+    <script>
+        $(function () {
+            /* 
+                $("선택자").on("이벤트명",이벤트핸들러)
+            */
+            $("#test2")
+                .on("mouseenter", function () {
+                    $(this).css("background", "yellowgreen").text("여길클릭해보세요");
+                })
+                .on("click", function () {
+                    // 이벤트 제거 메서드 .off(이벤트명)
+                    $(this).off("mouseenter").css("background", "orangered")
+                        .text("이벤트가 제거됨");
+                });
+        })
+    </script>
+
+    <br><br>
+
+    <h3>* 3번째 방법</h3>
+
+    <div id="wrap">
+        <h4>h4입니다. 저를 클릭해주세요</h4>
+        <h5>h5입니다. 저를 클릭해주세요</h5>
+    </div>
+
+    <script>
+        $(function () {
+            /* 
+                $("상위요소선택자").on("이벤트명","하위요소선택자",이벤트핸들러)
+            */
+            $("#wrap h4").on("click", function () { // h4태그에 이벤트 추가
+                $(this).html("절 클릭해주셔서 감사합니다.");
+            });
+
+            // 위 이벤트적용방식과 기능은 동일하나, 이벤트 적용대상이 다르다.
+            $("#wrap").on("click","h4",function(){ // 부모요소의 wrap에 이벤트 추가.
+                $(this).html("절 선택해주셔서 감사합니다..");
+            });
+        })
+    </script>
+
+    <h3>동적으로 생성된 요소에 이벤트 부여하기</h3>
+
+    <div id="wrap2" style="border:1px solid red;">
+        <h6>기존에 존재하는 요소</h6>
+    </div>
+
+    <script>
+        $(function(){
+            // $("#wrap2>h6").click(function(){
+            //     $("#wrap2").append("<h6>동적으로 생성된 요소</h6>")
+            // });
+            // $("#wrap2 h6").on("click",function(){
+            //     $("#wrap2").append("<h6>동적으로 생성된 요소</h6>");
+            // });
+            $("#wrap2").on("click","h6",function(){
+                $("#wrap2").append("<h6>동적으로 생성된 요소</h6>");
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>* 일회성 이벤트</h3>
+    <h6 id="test3">딱 한번만 실행됩니다.</h6>
+
+    <script>
+        $(function(){
+            $("#test3").one("click",function(){
+                $(this).html("이벤트 끝났습니다..");
+                console.log("이벤트 발생");
+            });
+        });
+    </script>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

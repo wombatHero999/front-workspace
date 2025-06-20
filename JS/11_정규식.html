@@ -198,7 +198,7 @@
         */
         function test10() {
             const s = "$12$ \\-\\ $25$";
-            area.innerHTML = s.replace(/\$/g, "<mark>$&</mark>");
+            area.innerHTML = s.replace(/\^\$/g, "<mark>$&</mark>");
             area.innerHTML = s.replace(/[$]/g, "<mark>$&</mark>");
             area.innerHTML = s.replace(/\$$/g, "<mark>$&</mark>");
             area.innerHTML = s.replace(/^\$/g, "<mark>$&</mark>");

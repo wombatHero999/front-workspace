@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>필터링 관련 선택자 및 메소드</title>
     <script src="resources/jquery_3.7.1.js"></script>
 </head>
+
 <body>
     <h1>필터링 관련 선택자 및 메소드</h1>
     <h3>* 필터 관련 선택자</h3>
@@ -37,22 +39,22 @@
     </table>
 
     <script>
-        $(function(){
-            $("tr:first").css("background",'black').css('color','white');
-            $("tr:last").css({background:"red",color:"white"});
-            $("tr:even").css("background","lightgray");
-            $("tr:odd").css("background","yellow");
+        $(function () {
+            $("tr:first").css("background", 'black').css('color', 'white');
+            $("tr:last").css({ background: "red", color: "white" });
+            $("tr:even").css("background", "lightgray");
+            $("tr:odd").css("background", "yellow");
         });
     </script>
 
     <hr>
-    
+
     <h3>* 필터링과 관련된 메소드</h3>
     <p>
         기준이 되는 요소 중에서 특정 요소만을 걸러서 선택해주는 메소드 <br>
         first(), last(), filter(), eq(), not()
     </p>
-    
+
     <h4 class="test">test-1</h4>
     <h4 class="test">test-2</h4>
     <h4 class="test">test-3</h4>
@@ -60,16 +62,70 @@
     <h4>test-5</h4>
     <h4 class="test">test-6</h4>
     <script>
-        $(function(){
-            $("h4").first().css("font-size","20px");
-            $("h4").last().css("font-size","30px");
-            
+        $(function () {
+            $("h4").first().css("font-size", "20px");
+            $("h4").last().css("font-size", "30px");
+
             $("h4").filter(".test").html("ㅋㅋㅋ");
-            $("h4").not(".test").css("color","red");
+            $("h4").not(".test").css("color", "red");
             $("h4").eq(2).text("eq로 선택");
             $("h4")[2].innerText = "js객체"
         });
     </script>
 
+    <div class="wrapper">
+        <p>안녕1</p>
+        <p>안녕2</p>
+        <p>안녕3</p>
+        <p>안녕4</p>
+        <p>안녕5</p>
+        <p>안녕6</p>
+        <p><a href="#">안녕7</a></p>
+        <p>안녕8</p>
+        <p>안녕9</p>
+        <p>안녕10</p>
+    </div>
+    <input type="button" value=":eq()" onclick="test2();">
+    <input type="button" value=":gt() :lt()" onclick="test3();">
+    <input type="button" value=":contains()" onclick="test4();">
+    <input type="button" value=":has()" onclick="test5();">
+    <input type="button" value=":not()" onclick="test6();">
+
+    <script>
+        function test2(){
+            $(".wrapper p:eq(2)")
+            .css("color","deeppink");
+        }
+        function test3(){
+            // gt(index) lt(index)
+            $(".wrapper p:gt(2)")
+            .css("font-size","2em");
+
+            $(".wrapper p:lt(2)")
+            .css("font-size","2em");
+        }
+
+        function test4(){
+            // :contains() 
+            //  - 특정 문자를 가진 태그를 조회
+            $(".wrapper p:contains('안녕8')")
+            .css('text-decoration','line-through');
+        }
+
+        function test5(){
+            // :has(selector)
+            $(".wrapper p:has(a)").css("background","pink");
+        }
+
+        function test6(){
+            // :not(선택자)
+            $(".wrapper p:not(:first-child)")
+            .css("color","green");
+        }
+
+    </script>
+
+
 </body>
+
 </html>

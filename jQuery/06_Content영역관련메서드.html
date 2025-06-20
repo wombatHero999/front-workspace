@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역관련메서드</title>
+    <script src="./resources/jquery_3.7.1.js"></script>
+</head>
+<body>
+    <h1>Content영역(innerHTML, innerText)관련 메서드</h1>
+
+    <h1 id="test1">네이버로</h1>
+    <h1 id="test2" ></h1>
+
+    <script>
+        $(function(){
+            const test1 = $("#test1").html(); // "네이버로"
+            console.log(test1);
+            $("#test2").html(test1);
+        });
+    </script>
+
+    <br><br>
+
+    <div class="class1">test</div>
+    <div class="class1">test</div>
+    <div class="class1">test</div>
+
+    <script>
+        $(function(){
+            //$(".class1").html("<h1>돼지</h1>");
+            
+            // function의 첫번째 인자는 index
+            // function의 두번째 인자는 item(선택된 요소의 innerHTML)가 전달된다.
+            $(".class1").html(function(index, item){
+                return "<h1>현재 인덱스 "+index+"</h1>";
+            });
+        });
+    </script>
+
+    <br><br>
+
+    <div class="class2">test1</div>
+    <div class="class2">test2</div>
+    <div class="class2">test3</div>
+
+    <script>
+        $(function(){
+            $(".class2").text(function(index, text){
+                return "index : " + index +", text : " + text;
+            })
+        });
+    </script>
+
+</body>
+</html>

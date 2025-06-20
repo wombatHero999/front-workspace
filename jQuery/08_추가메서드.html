@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./resources/jquery_3.7.1.js"></script>
+    <style>
+        .highlight-0 {
+            background: red;
+        }
+
+        .highlight-1 {
+            background: orange;
+        }
+
+        .highlight-2 {
+            background: yellow;
+        }
+
+        .highlight-3 {
+            background: green;
+        }
+
+        .highlight-4 {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>추가 메서드</h1>
+    <h3>* each 메서드</h3>
+
+    <pre>
+        배열의 모든 인덱스에 순차적으로 접근하고자 할 때 ,
+        객체가 가지고 있는 모든 속성에 순차적으로 접근하고자 할 때,
+        사용하는 메서드.(for of, for in의 기능이 모두 들어가 있다.)
+    </pre>
+
+    <div id="area1"></div>
+
+    <script>
+        $(function () {
+            const arr = ['경', '민', '짱'];
+            /*
+                [표현법]
+                1) $.each(객체/배열, function(매개변수1,매개변수2){
+                    실행할 내용
+                });
+
+                2) $("선택자"/배열).each(function(매개변수1,매개변수2){
+                    실행할내용
+                })
+            */
+
+            // $.each(arr, function(index, value){
+            //     console.log(index , value);
+            // })
+
+            $(arr).each(function (index, value) {
+                console.log(index, value);
+            });
+
+            const student = {
+                name: '심은성',
+                age: 26,
+                address: '인천 주안'
+            };
+
+            $.each(student, function (key, value) {
+                console.log(key, value);
+            })
+        });
+    </script>
+
+    <div id="wrap">
+        <h1>item-1</h1>
+        <h1>item-2</h1>
+        <h1>item-3</h1>
+        <h1>item-4</h1>
+        <h1>item-5</h1>
+    </div>
+
+    <script>
+        $(function () {
+            $("#wrap").children().each(function (index, h1) {
+                console.log(index, h1);
+                //h1.addClass("zz");
+                $(h1).addClass("highlight-" + index);
+            });
+        })
+    </script>
+
+    <br>
+    <hr>
+    <h3>* is 메서드</h3>
+
+    <h3 class="test">test1</h3>
+    <h3>test2</h3>
+    <h3 class="test">test3</h3>
+    <h3 class="test">test4</h3>
+    <h3>test5</h3>
+    <h3 class="test">test6</h3>
+
+    <script>
+        $(function () {
+            /* 
+                .is("선택자")
+                - 선택된 요소가 내가 전달한 선택자와 일치하는지 판단하여
+                일치한다면 true/ 아니라면 false 반환하는 메서드
+            */
+            $("h3").each(function(){
+                console.log(this); // 현재 반복중인 h3요소
+                if($(this).is(".test")){
+                    $(this).css("background",'orange');
+                }else{
+                    $(this).css('background','pink');
+                }
+            });
+        })
+    </script>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
