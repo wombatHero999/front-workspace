@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module"  src="./03.esm.js"></script>
+    <script type="module">
+        import {sayHi, abc} from './03.esm.js'
+        import {fn1} from './03.esm.js'
+
+        sayHi();
+        console.log(abc);
+        fn1(1234);
+
+        //default 값 import시에는 {}를 생략한다.
+        import mkm from './03.esm.js'
+        console.log(mkm);
+
+        // import시 변수명 수정
+        import {fn1 as function1} from './03.esm.js';
+        function1(1111);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

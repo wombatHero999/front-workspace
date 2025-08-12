@@ -1,0 +1,7 @@
+{  
+  "compilerOptions": { 
+    "module" :"commonjs", //모듈 시스템 설정 (Node.js용)
+    "target" :"es6", // 트랜스파일 결과의 자바스크립트 버전.
+    "strictNullChecks": true
+  }
+}

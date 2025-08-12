@@ -11,7 +11,14 @@
 <body>
     <h2>Event 1</h2>
     <script>
-        
+        $(function(){
+            $("select").change(function(){                
+                // seletecd
+                //const option = $(":selected");
+                const option = $(this).children().filter(":selected");
+                $("#selNum").html(option.html());
+            });
+        })
     </script>
     
     <select name="number">
@@ -27,7 +34,16 @@
 
     <h2>Event 2</h2>
     <script>
-    
+        $(function(){
+            $("#event2 tr").not(":first")
+            .click(function(){
+                const tds = $(this).children();
+                $("#s1").html(tds.eq(0).html());
+                $("#s2").html(tds.eq(1).html());
+                $("#s3").html(tds.eq(2).html());
+                $("#s4").html(tds.eq(3).html());
+            });
+        });
     </script>
     
     <table id="event2" border="1">
@@ -46,7 +62,19 @@
     
     <h2>Event 3</h2>
     <script>
-    
+        $(function(){
+            $("#event3 tr").not(":first")
+            .click(function(){
+                $(this).siblings().css("background","");
+                $(this).css("background","red");
+
+                const tds = $(this).children();
+                $("#s5").html(tds.eq(0).html());
+                $("#s6").html(tds.eq(1).html());
+                $("#s7").html(tds.eq(2).html());
+                $("#s8").html(tds.eq(3).html());
+            });
+        });
     </script>
 
     <table id="event3" border="1">
