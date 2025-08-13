@@ -48,3 +48,55 @@ const ses:Teacher  = {name : 'shimEunseong', married : false, major: 'it', class
 const karina:Singer = {name : '카리나', married : false, songs: ['슈퍼노바','블랙맘바'] , group : '에스파'  };
 const winter:Singer = {name : '윈터', songs: ['슈퍼노바','블랙맘바'] , group : '에스파'  };
 
+type ObjType = {
+    name : 'mkm',
+    printName : PrintFn,
+    call : CallFn
+};
+type PrintFn = (callback: (str:string) => void ) => void;
+type CallFn = () => void;
+
+const obj:ObjType = {
+    name : 'mkm', 
+    printName: function(callback) {        
+        callback(this.name);
+    },
+    call : function() {
+        const callback = (something:string) : void => {console.log(something)}
+        this.printName(callback);
+    } 
+};
+obj.call(); // mkm
+
+
+type Coin = {
+    ticker : string,
+    market : string,
+    [key:string] : string | number | boolean 
+}
+const coin:Coin = {
+    ticker : 'BTC',
+    market : 'KRW',
+    description : '최초의암호화폐'
+}
+//1) price속성 추가
+coin.price = 10000000; //ok
+//2) rank속성 추가
+coin.rank = 1; // ok
+//3) trade속성추가
+coin.trade = true; // ok
+//coin.trade = [1,2,3,4] // error
+//coin.trade = undefined; // error
+//coin.trade = null// error
+
+function greetUser({name,age, ...others}:{name:string, age:number,[x:string]:string|number}) {
+    console.log(`안녕하세요. 제이름은 ${name} ${age}살 입니다.`); // 안녕하세요. 제이름은 홍길동 30살 입니다.
+    console.log(`추가정보 : `, others); // 추가정보 : { email: 'hong@test.com', location: '서울' }
+}
+const user = {
+    name: '홍길동',
+    age: 30,
+    email: 'hong@test.com',
+    location: '서울'
+};
+greetUser(user);

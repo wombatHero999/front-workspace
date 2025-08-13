@@ -41,6 +41,68 @@ function sum(array2: (string|number|number[])[]) : number{
 const total = sum(array2);
 console.log(total); // 30
 
+function abc(param:string|number|string[]|number[]) : number|number[]{
+    if(typeof param === 'string'){
+        return Number(param); 
+    } else if(typeof param === 'number'){
+        return param;
+    } else if(typeof param === 'object' && Array.isArray(param)){
+        let numberArr:number[] = [];
+        for(let num of param){
+            if(typeof num === 'string'){
+                numberArr.push(Number(num));
+            }else{
+                numberArr.push(num);
+            }
+        }
+        return numberArr;
+    }else{
+        const check:never = param;
+        return check;
+    }
+}
+
+function multiplyAll(num:number, ...nums:number[]): number {
+    for(let number of nums){
+        num *= number;
+    }
+    return num
+}
+console.log(multiplyAll(2)); // 2
+console.log(multiplyAll(2, 2)); // 4
+console.log(multiplyAll(2, 2, 2)); // 8
+console.log(multiplyAll(2, 2, 2, 2)); // 16
+console.log(multiplyAll(2, 2, 2, 2, 2)); // 32
+
+type Types = string|number|boolean;
+function handleValue(value:Types) {
+    if(typeof value === 'string'){
+        console.log('문자열 입니다')
+    }
+    else if(typeof value === 'number'){
+        console.log('숫자입니다.');        
+    }else if (typeof value ==='boolean'){
+        console.log('불립닙니다.')
+    }else{
+        assertNever(value);
+    }
+}
+function assertNever(value : never){
+    throw new Error("에러입니다.");   
+}
+
+type FnType = ([first, ...rest]:[number, ...number[]]) => number[];
+const fn:FnType = ([first, ...rest]) => {
+    for(let i=0; i<rest.length; i++){
+        rest[i] += first;
+    }
+    return rest;
+}
+//fn([]) // 컴파일에러
+fn([1]); // []
+fn([1,2]); // [3]
+fn([1,2,3]); // [3,4]
+fn([1,2,3,4]); // [3,4,5]
 
 
 export default total;

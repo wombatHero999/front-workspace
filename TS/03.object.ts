@@ -162,14 +162,14 @@ const responseData2:ClassInfo = {
     student2 : 'jsy',
     student3 : 'kkk',
     student4 : 'tes',    
-    studentCount : 30
+    studentCount : 30    
 }
 type ClassInfo = {
     name:string,
     classRoom:string,
     teacher:string, 
-    [student:string] : string | number,
-    studentCount: number
+    [student:string] : string | number ,
+    studentCount: number,
 }
 
 /* 
